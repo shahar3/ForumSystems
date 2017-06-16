@@ -9,14 +9,24 @@ namespace MyForum.Model
 {
     abstract class AForum
     {
-        public string m_logo;
-        public string m_forumName;
-        public string m_subject;
-        public string m_description;
-        public List<User> m_moderator;
-        public List<Observer> m_users;
-        public ObservableCollection<Topic> m_topics;
-        
+
+        #region fields
+        private string logo;
+        private string forumName;
+        private string subject;
+        private string description;
+        private List<User> moderator;
+        private List<Observer> users;
+        private ObservableCollection<Topic> topics;
+        #endregion
+
+        public string Logo { get => logo; set => logo = value; }
+        public string ForumName { get => forumName; set => forumName = value; }
+        public string Subject { get => subject; set => subject = value; }
+        public string Description { get => description; set => description = value; }
+        internal List<User> Moderator { get => moderator; set => moderator = value; }
+        internal List<Observer> Users { get => users; set => users = value; }
+        internal ObservableCollection<Topic> Topics { get => topics; set => topics = value; }
 
         abstract public void addTopic(Topic topic);
         abstract public void removeTopic(Topic topicToDelete, User user);

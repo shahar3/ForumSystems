@@ -17,6 +17,7 @@ namespace MyForum.Model
         {
             Console.WriteLine("ok");
             loadUsers();
+
         }
 
         //load users that are regitred to the forum
@@ -41,7 +42,7 @@ namespace MyForum.Model
                         bool canDeleteTopic = sr.ReadBoolean();
                         bool canBanUser = sr.ReadBoolean();
                         User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser);
-
+                        users.Add(user.UserName, user);
                     }
                 }
             }
