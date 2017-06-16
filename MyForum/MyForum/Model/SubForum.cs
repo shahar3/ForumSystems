@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyForum.Model;
 
 namespace MyForum.Model
 {
@@ -26,6 +27,7 @@ namespace MyForum.Model
             //send notification to all sub forum members
             foreach (Observable user in m_users)
             {
+                Notification notification = new Notification();
                 //user.update();
             }
 

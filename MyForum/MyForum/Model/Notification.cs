@@ -8,5 +8,6 @@ namespace MyForum.Model
 {
     class Notification
     {
+
     }
 }
