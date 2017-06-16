@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyForum.Model;
+using MyForum.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,13 @@ namespace MyForum
     /// </summary>
     public partial class MainWindow : Window
     {
+        MyViewModel vm;
+
         public MainWindow()
         {
             InitializeComponent();
+            vm = new MyViewModel(new MyModel());
+            this.DataContext = vm;
         }
 
         private void LogInC_Loaded(object sender, RoutedEventArgs e)
