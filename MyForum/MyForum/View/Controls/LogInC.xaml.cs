@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyForum.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +21,17 @@ namespace MyForum.View.Controls
     /// </summary>
     public partial class LogInC : UserControl
     {
-        public LogInC()
+        MyViewModel vm;
+
+        public LogInC(MyViewModel vm)
         {
             InitializeComponent();
+            this.vm = vm;
         }
 
         //This event triggered when the user press on log in button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
