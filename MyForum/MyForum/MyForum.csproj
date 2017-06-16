@@ -66,7 +66,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\AForum.cs" />
+    <Compile Include="Model\AManagement.cs" />
+    <Compile Include="Model\AUser.cs" />
+    <Compile Include="Model\MainForum.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\Moderator.cs" />
     <Compile Include="Model\MyModel.cs" />
+    <Compile Include="Model\Observable.cs" />
+    <Compile Include="Model\Observer.cs" />
+    <Compile Include="Model\Topic.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="ViewModel\MyViewModel.cs" />
     <Compile Include="View\Controls\LogInC.xaml.cs">
       <DependentUpon>LogInC.xaml</DependentUpon>

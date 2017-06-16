@@ -24,5 +24,11 @@ namespace MyForum
         {
             InitializeComponent();
         }
+
+        private void LogInC_Loaded(object sender, RoutedEventArgs e)
+        {
+            //get the password and username from the text boxes
+
+        }
     }
 }
