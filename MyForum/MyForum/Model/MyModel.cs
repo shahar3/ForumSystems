@@ -18,6 +18,7 @@ namespace MyForum.Model
             loadUsers();
         }
 
+        //load users that are regitred to the forum
         private void loadUsers()
         {
             if (!File.Exists("users.txt"))
@@ -26,11 +27,20 @@ namespace MyForum.Model
             }
             using (FileStream fs = new FileStream("users.txt", FileMode.Open))
             {
-                using (StreamReader sr = new StreamReader(fs))
+                using (BinaryReader sr = new BinaryReader(fs))
                 {
-                    while (!sr.EndOfStream)
+                    while (sr.BaseStream.Position != sr.BaseStream.Length)
                     {
-                        string line = sr.ReadLine();
+                        string firstName = sr.ReadString();
+                        string lastName = sr.ReadString();
+                        string email = sr.ReadString();
+                        string password = sr.ReadString();
+                        string userName = sr.ReadString();
+                        bool canDeleteMsg = sr.ReadBoolean();
+                        bool canDeleteTopic = sr.ReadBoolean();
+                        bool canBanUser = sr.ReadBoolean();
+                        User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser);
+
                     }
                 }
             }

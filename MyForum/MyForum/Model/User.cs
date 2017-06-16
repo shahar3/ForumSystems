@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    abstract class User : Observer
+    class User : Observer
     {
         #region fields
         string firstName;
@@ -32,16 +32,20 @@ namespace MyForum.Model
         public string UserName { get => userName; set => userName = value; }
 
         //the default constructor
-        public User(string firstName, string lastName, string email, string password, string userName)
+        public User(string firstName, string lastName, string email, string password, string userName,bool canDeleteMsg,bool canDeleteTopic,bool canBanUser)
         {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.email = email;
+            this.email = email; 
             this.password = password;
             this.userName = userName;
-            canBanUser = false;
-            canDeleteMsg = false;
-            canBanUser = false;
+            this.canDeleteMsg = canDeleteMsg;
+            this.canDeleteTopic = canDeleteTopic;
+            this.canBanUser = canBanUser;
+        }
+
+        public User(string line)
+        {
         }
 
         public void update(Notification notification)
