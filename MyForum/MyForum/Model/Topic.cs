@@ -8,5 +8,12 @@ namespace MyForum.Model
 {
     class Topic
     {
+        List<Message> messages;
+        string subject;
+
+        public Topic(string subject)
+        {
+            this.subject = subject;
+        }
     }
 }

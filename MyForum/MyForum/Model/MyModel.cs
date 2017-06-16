@@ -7,14 +7,21 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class MyModel:INotifyPropertyChanged
+    class MyModel : INotifyPropertyChanged
     {
+        List<User> users;
+
         public MyModel()
         {
             Console.WriteLine("ok");
+            loadUsers();
         }
 
-#region event handler
+        private void loadUsers()
+        {
+        }
+
+        #region event handler
         public event PropertyChangedEventHandler PropertyChanged;
         public void notifyPropertyChanged(string propName)
         {
@@ -23,6 +30,6 @@ namespace MyForum.Model
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-#endregion
+        #endregion
     }
 }
