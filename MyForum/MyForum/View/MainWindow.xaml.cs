@@ -1,4 +1,5 @@
 ﻿using MyForum.Model;
+using MyForum.View;
 using MyForum.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -31,10 +32,11 @@ namespace MyForum
             this.DataContext = vm;
         }
 
-        private void LogInC_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //get the password and username from the text boxes
-
+            //openn register window
+            Register register = new Register(vm);
+            register.Show();
         }
     }
 }

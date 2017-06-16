@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class MyModel : INotifyPropertyChanged
+    public class MyModel : INotifyPropertyChanged
     {
         List<User> users;
 
@@ -19,6 +20,20 @@ namespace MyForum.Model
 
         private void loadUsers()
         {
+            if (!File.Exists("users.txt"))
+            {
+                return;
+            }
+            using (FileStream fs = new FileStream("users.txt", FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                    }
+                }
+            }
         }
 
         #region event handler

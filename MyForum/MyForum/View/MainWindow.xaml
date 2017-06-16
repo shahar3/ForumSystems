@@ -18,7 +18,8 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Background="Aquamarine">
-                <controls:LogInC Loaded="LogInC_Loaded"></controls:LogInC>
+                <controls:LogInC></controls:LogInC>
+                <Button Click="Button_Click">Register</Button>
             </StackPanel>
         </Grid>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" Foreground="DarkBlue">Welcome to SIDY forums</Label>

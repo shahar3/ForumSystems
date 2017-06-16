@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.ViewModel
 {
-    class MyViewModel:INotifyPropertyChanged
+    public class MyViewModel:INotifyPropertyChanged
     {
         MyModel model;
 
