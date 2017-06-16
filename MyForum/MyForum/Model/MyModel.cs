@@ -11,7 +11,7 @@ namespace MyForum.Model
 {
     public class MyModel : INotifyPropertyChanged
     {
-        Dictionary<string,User> users = new Dictionary<string, User>();
+        Dictionary<string, User> users = new Dictionary<string, User>();
 
         public MyModel()
         {
@@ -53,10 +53,30 @@ namespace MyForum.Model
             //check if the user already exist in the system
             if (users.ContainsKey(userName))
             {
-                MessageBox.Show("There is a user with the same username (" +userName+")");
+                MessageBox.Show("There is a user with the same username (" + userName + ")");
                 return;
             }
-            users[userName] = new User(firstName, lastName, email, password, userName);
+            users[userName] = new User(firstName, lastName, email, password, userName, false, false, false);
+            addUserToFile(users[userName]);
+        }
+
+        private void addUserToFile(User user)
+        {
+            using (FileStream fs = new FileStream("users.txt", FileMode.Append))
+            {
+                using (BinaryWriter bw = new BinaryWriter(fs))
+                {
+                    bw.Write(user.FirstName);
+                    bw.Write(user.LastName);
+                    bw.Write(user.Email);
+                    bw.Write(user.Password);
+                    bw.Write(user.UserName);
+                    bw.Write(user.CanDeleteMsg);
+                    bw.Write(user.CanDeleteTopic);
+                    bw.Write(user.CanBanUser);
+
+                }
+            }
         }
 
         #region event handler

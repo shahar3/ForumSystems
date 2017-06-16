@@ -17,9 +17,9 @@ namespace MyForum.Model
         #endregion
 
         #region permissions
-        public bool canDeleteMsg;
-        public bool canDeleteTopic;
-        public bool canBanUser;
+        bool canDeleteMsg;
+        bool canDeleteTopic;
+        bool canBanUser;
         #endregion
 
         //hold a list of notifications
@@ -31,18 +31,21 @@ namespace MyForum.Model
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
         public string UserName { get => userName; set => userName = value; }
+        public bool CanDeleteMsg { get => canDeleteMsg; set => canDeleteMsg = value; }
+        public bool CanDeleteTopic { get => canDeleteTopic; set => canDeleteTopic = value; }
+        public bool CanBanUser { get => canBanUser; set => canBanUser = value; }
 
         //the default constructor
-        public User(string firstName, string lastName, string email, string password, string userName,bool canDeleteMsg,bool canDeleteTopic,bool canBanUser)
+        public User(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser)
         {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.email = email; 
+            this.email = email;
             this.password = password;
             this.userName = userName;
-            this.canDeleteMsg = canDeleteMsg;
-            this.canDeleteTopic = canDeleteTopic;
-            this.canBanUser = canBanUser;
+            this.CanDeleteMsg = canDeleteMsg;
+            this.CanDeleteTopic = canDeleteTopic;
+            this.CanBanUser = canBanUser;
         }
 
         public User(string line)
