@@ -43,9 +43,9 @@ namespace MyForum.View
             }
             else
             {
-                if(vm.register(firstName, lastName, email, userName, password))
+                if (vm.register(firstName, lastName, email, userName, password))
                 {
-                    this.Close();
+                    this.Close(); //close the window after the registration complete
                 }
             }
         }
