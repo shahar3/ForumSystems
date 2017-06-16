@@ -11,7 +11,7 @@ namespace MyForum.Model
     {
         public MyModel()
         {
-
+            Console.WriteLine("ok");
         }
 
 #region event handler
