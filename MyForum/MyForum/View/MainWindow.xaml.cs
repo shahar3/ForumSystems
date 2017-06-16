@@ -38,5 +38,11 @@ namespace MyForum
             Register register = new Register(vm);
             register.Show();
         }
+
+        private void LogInC_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            vm.login(e.)
+        }
     }
 }

@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" Background="Aquamarine">
-                <controls:LogInC></controls:LogInC>
+                <controls:LogInC Loaded="LogInC_Loaded"></controls:LogInC>
                 <Button Click="Button_Click">Register</Button>
             </StackPanel>
         </Grid>

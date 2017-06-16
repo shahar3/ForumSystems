@@ -15,9 +15,7 @@ namespace MyForum.Model
 
         public MyModel()
         {
-            Console.WriteLine("ok");
             loadUsers();
-
         }
 
         //load users that are regitred to the forum
