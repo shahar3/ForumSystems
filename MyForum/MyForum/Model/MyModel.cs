@@ -5,12 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyForum.Model
 {
     public class MyModel : INotifyPropertyChanged
     {
-        List<User> users;
+        Dictionary<string,User> users = new Dictionary<string, User>();
 
         public MyModel()
         {
@@ -34,6 +35,17 @@ namespace MyForum.Model
                     }
                 }
             }
+        }
+
+        internal void register(string firstName, string lastName, string email, string userName, string password)
+        {
+            //check if the user already exist in the system
+            if (users.ContainsKey(userName))
+            {
+                MessageBox.Show("There is a user with the same username (" +userName+")");
+                return;
+            }
+            users[userName] = new User(firstName, lastName, email, password, userName);
         }
 
         #region event handler

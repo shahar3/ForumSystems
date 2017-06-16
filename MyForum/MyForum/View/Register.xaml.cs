@@ -27,5 +27,24 @@ namespace MyForum.View
             InitializeComponent();
             this.vm = vm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //get all the fields
+            string firstName = tbFirstName.Text;
+            string lastName = tbLastName.Text;
+            string email = tbEmail.Text;
+            string userName = tbUserName.Text;
+            string password = tbPassword.Password;
+            //check for a valid input
+            if (firstName == "" || lastName == "" || email == "" || userName == "" || password == "")
+            {
+                MessageBox.Show("You need to fill all the fields");
+            }
+            else
+            {
+                vm.register(firstName, lastName, email, userName, password);
+            }
+        }
     }
 }

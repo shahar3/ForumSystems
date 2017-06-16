@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    abstract class User : Observer
+    class User : Observer
     {
         #region fields
         string firstName;
