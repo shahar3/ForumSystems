@@ -77,6 +77,7 @@
     <Compile Include="Model\MyModel.cs" />
     <Compile Include="Model\Observable.cs" />
     <Compile Include="Model\Observer.cs" />
+    <Compile Include="Model\SubForum.cs" />
     <Compile Include="Model\Topic.cs" />
     <Compile Include="ViewModel\MyViewModel.cs" />
     <Compile Include="View\Controls\LogInC.xaml.cs">
