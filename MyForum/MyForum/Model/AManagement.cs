@@ -11,7 +11,7 @@ namespace MyForum.Model
     /// </summary>
     abstract class AManagement : User
     {
-        public AManagement(string firstName, string lastName, string email, string password, string userName) : base(firstName, lastName, email, password, userName)
+        public AManagement(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser) : base(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser)
         {
 
         }

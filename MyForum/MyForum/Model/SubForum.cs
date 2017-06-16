@@ -42,7 +42,7 @@ namespace MyForum.Model
         public override void removeTopic(Topic topicToDelete, User user)
         {
             //check if which user are (admin,moderator,regular user)
-            if (user.canDeleteTopic)
+            if (user.CanDeleteTopic)
             {
                 //there is a admin
                 deleteTopic(topicToDelete);
