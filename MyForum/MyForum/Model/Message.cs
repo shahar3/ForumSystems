@@ -8,5 +8,13 @@ namespace MyForum.Model
 {
     class Message
     {
+        string content;
+        User publisher;
+
+        public Message(User publisher, string content)
+        {
+            this.publisher = publisher;
+            this.content = content;
+        }
     }
 }
