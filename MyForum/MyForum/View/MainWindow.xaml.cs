@@ -1,5 +1,6 @@
 ﻿using MyForum.Model;
 using MyForum.View;
+using MyForum.View.Controls;
 using MyForum.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace MyForum
             InitializeComponent();
             vm = new MyViewModel(new MyModel());
             this.DataContext = vm;
+            LogInC login = new LogInC(vm);
+            sp.Children.Add(login);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

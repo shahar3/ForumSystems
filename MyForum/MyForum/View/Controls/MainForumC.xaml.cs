@@ -17,21 +17,16 @@ using System.Windows.Shapes;
 namespace MyForum.View.Controls
 {
     /// <summary>
-    /// Interaction logic for LogInC.xaml
+    /// Interaction logic for MainForumC.xaml
     /// </summary>
-    public partial class LogInC : UserControl
+    public partial class MainForumC : UserControl
     {
         MyViewModel vm;
 
-        public LogInC(MyViewModel vm)
+        public MainForumC(MyViewModel vm)
         {
             InitializeComponent();
             this.vm = vm;
-        }
-
-        //This event triggered when the user press on log in button
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }
