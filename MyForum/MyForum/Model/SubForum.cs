@@ -14,23 +14,23 @@ namespace MyForum.Model
 
         public SubFourom(string logo, string forumName, string subject, string description, List<User> moderator)
         {
-            m_forumName = forumName;
-            m_logo = logo;
-            m_subject = subject;
-            m_description = description;
-            m_moderator = moderator;
-            m_users = new List<Observer>();
-            m_topics = new ObservableCollection<Topic>();
+            ForumName = forumName;
+            Logo = logo;
+            Subject = subject;
+            Description = description;
+            Moderator = moderator;
+            Users = new List<Observer>();
+            Topics = new ObservableCollection<Topic>();
         }
 
         //add the topic to the topics list
         public override void addTopic(Topic topic)
         {
-            m_topics.Add(topic);
+            Topics.Add(topic);
             //send notification to all sub forum members
             string message = "Hello, there is a new topic that was added to forum that you are regisred";
-            string title = "New topic was added in " + m_forumName;
-            foreach (Observable user in m_users)
+            string title = "New topic was added in " + ForumName;
+            foreach (Observable user in Users)
             {
                 Notification notification = new Notification(message, title);
                 (user as User).update(notification);
@@ -64,11 +64,11 @@ namespace MyForum.Model
         //remove thr topic
         private void deleteTopic(Topic topicToDelete)
         {
-            foreach (Topic topic in m_topics)
+            foreach (Topic topic in Topics)
             {
                 if (topic.id == topicToDelete.id)
                 {
-                    m_topics.Remove(topic);
+                    Topics.Remove(topic);
                 }
             }
         }

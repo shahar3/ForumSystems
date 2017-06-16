@@ -8,5 +8,9 @@ namespace MyForum.Model
 {
     class MainForum
     {
+        public MainForum()
+        {
+
+        }
     }
 }
