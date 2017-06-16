@@ -8,6 +8,6 @@ namespace MyForum.Model
 {
     interface Observer
     {
-
+        void update(Notification notification);
     }
 }

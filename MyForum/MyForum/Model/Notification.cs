@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class AUser
+    class Notification
     {
     }
 }

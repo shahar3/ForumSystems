@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class Moderator
+    class Moderator : AManagement
     {
+        public Moderator(string firstName, string lastName, string email, string password, string userName) : base(firstName, lastName, email, password, userName)
+        {
+        }
     }
 }
