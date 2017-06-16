@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.ViewModel
 {
-    public class MyViewModel:INotifyPropertyChanged
+    public class MyViewModel : INotifyPropertyChanged
     {
         MyModel model;
 
@@ -27,9 +27,9 @@ namespace MyForum.ViewModel
             }
         }
 
-        internal void register(string firstName, string lastName, string email, string userName, string password)
+        internal bool register(string firstName, string lastName, string email, string userName, string password)
         {
-            model.register(firstName, lastName, email, userName, password);
+            return model.register(firstName, lastName, email, userName, password);
         }
         #endregion
     }

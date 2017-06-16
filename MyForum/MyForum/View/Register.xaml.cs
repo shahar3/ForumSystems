@@ -43,7 +43,10 @@ namespace MyForum.View
             }
             else
             {
-                vm.register(firstName, lastName, email, userName, password);
+                if(vm.register(firstName, lastName, email, userName, password))
+                {
+                    this.Close();
+                }
             }
         }
     }

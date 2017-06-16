@@ -47,16 +47,18 @@ namespace MyForum.Model
             }
         }
 
-        internal void register(string firstName, string lastName, string email, string userName, string password)
+        internal bool register(string firstName, string lastName, string email, string userName, string password)
         {
             //check if the user already exist in the system
             if (users.ContainsKey(userName))
             {
                 MessageBox.Show("There is a user with the same username (" + userName + ")");
-                return;
+                return false;
             }
             users[userName] = new User(firstName, lastName, email, password, userName, false, false, false);
             addUserToFile(users[userName]);
+            MessageBox.Show("User was added successfully");
+            return true;
         }
 
         private void addUserToFile(User user)
@@ -73,7 +75,6 @@ namespace MyForum.Model
                     bw.Write(user.CanDeleteMsg);
                     bw.Write(user.CanDeleteTopic);
                     bw.Write(user.CanBanUser);
-
                 }
             }
         }
