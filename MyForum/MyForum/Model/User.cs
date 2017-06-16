@@ -17,9 +17,9 @@ namespace MyForum.Model
         #endregion
 
         #region permissions
-        bool canDeleteMsg;
-        bool canDeleteTopic;
-        bool canBanUser;
+        public bool canDeleteMsg;
+        public bool canDeleteTopic;
+        public bool canBanUser;
         #endregion
 
         //hold a list of notifications
@@ -39,6 +39,9 @@ namespace MyForum.Model
             this.email = email;
             this.password = password;
             this.userName = userName;
+            canBanUser = false;
+            canDeleteMsg = false;
+            canBanUser = false;
         }
 
         public void update(Notification notification)

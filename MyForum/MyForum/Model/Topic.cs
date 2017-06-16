@@ -8,12 +8,15 @@ namespace MyForum.Model
 {
     class Topic
     {
-        List<Message> messages;
-        string subject;
+        public List<Message> messages;
+        public string subject;
+        public User messageOwner;
+        public int id;
 
-        public Topic(string subject)
+        public Topic(string subject,User user)
         {
             this.subject = subject;
+            messageOwner = user;
         }
     }
 }
