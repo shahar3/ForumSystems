@@ -24,6 +24,7 @@ namespace MyForum.Model
 
         //hold a list of notifications
 
+
         //encapsulate fields
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }

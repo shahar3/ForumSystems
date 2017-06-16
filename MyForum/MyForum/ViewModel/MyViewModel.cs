@@ -26,6 +26,11 @@ namespace MyForum.ViewModel
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
+
+        internal void register(string firstName, string lastName, string email, string userName, string password)
+        {
+            model.register(firstName, lastName, email, userName, password);
+        }
         #endregion
     }
 }
