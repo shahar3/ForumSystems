@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class AManagement
+    /// <summary>
+    /// This is the common class for moderators and admins
+    /// </summary>
+    abstract class AManagement : User
     {
+        public AManagement(string firstName, string lastName, string email, string password, string userName) : base(firstName, lastName, email, password, userName)
+        {
+
+        }
     }
 }

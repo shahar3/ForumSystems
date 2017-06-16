@@ -69,6 +69,7 @@
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\AForum.cs" />
     <Compile Include="Model\AManagement.cs" />
+    <Compile Include="Model\Notification.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\MainForum.cs" />
     <Compile Include="Model\Message.cs" />

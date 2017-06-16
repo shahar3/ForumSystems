@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    interface Observer
+    class Notification
     {
-        void update(Notification notification);
     }
 }
