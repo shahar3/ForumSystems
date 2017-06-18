@@ -63,7 +63,7 @@ namespace MyForum.ViewModel
         internal void addTopic(Topic topic, string forumName)
         {
             model.addTopic(topic, forumName);
-            model.sendNotification(forumName,userName);
+            model.sendNotification(forumName,topic.messageOwner.UserName);
         }
 
         #endregion event handler
@@ -71,6 +71,11 @@ namespace MyForum.ViewModel
         internal User GetUser(string userName)
         {
             return model.getUser(userName);
+        }
+
+        internal void follow(User user,string forumName)
+        {
+            model.follow(user,forumName);
         }
     }
 }

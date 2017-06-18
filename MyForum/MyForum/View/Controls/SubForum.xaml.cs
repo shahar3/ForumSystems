@@ -60,5 +60,12 @@ namespace MyForum.View.Controls
         {
             //Go back to mainForum
         }
+
+        //follow forum
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            m_user = _vm.GetUser(Name);
+            _vm.follow(m_user,SubForumNameLbl.Content.ToString());
+        }
     }
 }

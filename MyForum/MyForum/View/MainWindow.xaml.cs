@@ -75,6 +75,7 @@ namespace MyForum
                 //add welcome message for this user
                 displayWelcomeMessage(userName);
                 user = vm.GetUser(userName);
+                notificationLV.Items.Add(user.NotificationList);
             }
             else
             {

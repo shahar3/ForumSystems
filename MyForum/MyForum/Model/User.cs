@@ -57,6 +57,8 @@ namespace MyForum.Model
             this.CanDeleteMsg = canDeleteMsg;
             this.CanDeleteTopic = canDeleteTopic;
             this.CanBanUser = canBanUser;
+            notificationList = new List<string>();
+            subForumsList = new List<string>();
         }
 
         public User(string line)

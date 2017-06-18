@@ -10,12 +10,13 @@ using System.Windows;
 
 namespace MyForum.Model
 {
-    [Serializable]
+    [Serializable]        
+
     public class MyModel : INotifyPropertyChanged
     {
         private Dictionary<string, User> users = new Dictionary<string, User>();
-
         private Dictionary<string, List<Topic>> topics = new Dictionary<string, List<Topic>>();
+
         private BinaryFormatter formatter = new BinaryFormatter();
 
         public MyModel()
@@ -61,10 +62,16 @@ namespace MyForum.Model
                 {
                     if(forumName == subForum && user != userName)
                     {
-                        //////////////////////////////////////////////////////////////////////
+                        users[user].NotificationList.Add(forumName + " " + userName);
                     }
                 }
             }
+        }
+
+        //add this forum to sub forum list in the user
+        internal void follow(User user,string forumName)
+        {
+            user.SubForumsList.Add(forumName);
         }
 
         private void saveTopics()
