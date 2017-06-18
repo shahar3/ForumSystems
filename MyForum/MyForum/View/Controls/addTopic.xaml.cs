@@ -24,5 +24,21 @@ namespace MyForum.View.Controls
         {
             InitializeComponent();
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            sendNotification();
+            addNewTopic();
+        }
+
+        private void addNewTopic()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void sendNotification()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
