@@ -185,5 +185,9 @@ namespace MyForum.Model
         {
             return users[userName];
         }
+
+        internal void addTopic(Topic topic, string subForumName)
+        {
+        }
     }
 }

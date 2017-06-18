@@ -19,20 +19,19 @@ namespace MyForum.View.Controls
     /// </summary>
     public partial class NewTopic : Window
     {
-        public NewTopic()
+        public bool End = false;
+        private SubForum sf;
+
+        public NewTopic(SubForum subForum)
         {
+            sf = subForum;
             InitializeComponent();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            addNewTopic();
-            sendNotification();
+            sf.addTopic(this.ContentTextBox.Text, this.SubjectTextBox.Text);
             this.Close();
-        }
-
-        private void addNewTopic()
-        {
         }
     }
 }

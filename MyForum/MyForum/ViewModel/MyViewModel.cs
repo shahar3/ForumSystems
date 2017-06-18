@@ -58,7 +58,11 @@ namespace MyForum.ViewModel
 
         internal void sendNotification(object content)
         {
-            
+        }
+
+        internal void addTopic(Topic topic, string forumName)
+        {
+            model.addTopic(topic, forumName);
         }
 
         #endregion event handler

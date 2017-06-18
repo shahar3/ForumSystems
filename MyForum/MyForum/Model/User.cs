@@ -67,7 +67,14 @@ namespace MyForum.Model
 
         public bool havePermission(string subForumNameLbl)
         {
-            return this.subForumsList.Contains(subForumNameLbl);
+            if (this.subForumsList != null)
+            {
+                return this.subForumsList.Contains(subForumNameLbl);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -18,5 +18,6 @@
         </Label>
         <StackPanel Grid.Row="1" Name="StackPanel"></StackPanel>
         <Button Grid.Row="2" Name="AddDiscussionButton" Click="AddDiscussionButton_Click">Add Topic</Button>
+        <Button Grid.Row="0" Width="50" HorizontalAlignment="Left" Click="Button_Click">Back</Button>
     </Grid>
 </UserControl>
