@@ -9,9 +9,62 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition  Height="11*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="DarkBlue">Forums</Label>
-        <ListView Grid.Row="1"></ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Background="Black" Grid.ColumnSpan="2" />
+        <Grid Name="forumGrid" Grid.ColumnSpan="2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Name="politicsGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Center" FontWeight="Bold">Politics Forum</Label>
+                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+            </Grid>
+            <Grid Name="economicsGrid" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center">Economics Forum</Label>
+                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+            </Grid>
+            <Grid Name="sportGrid" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center">SportForum</Label>
+                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+            </Grid>
+            <Grid Name="programmingGrid" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Center" FontWeight="Bold">Programming Forum</Label>
+                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+            </Grid>
+            <Grid Name="generalGrid" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Center" FontWeight="Bold">GeneralForum</Label>
+                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+            </Grid>
+        </Grid>
+        <Label HorizontalAlignment="Center"  Grid.ColumnSpan="2" VerticalAlignment="Center" FontWeight="Bold" Foreground="DarkBlue">Forums</Label>
     </Grid>
 </UserControl>

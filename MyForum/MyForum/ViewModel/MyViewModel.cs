@@ -12,9 +12,28 @@ namespace MyForum.ViewModel
     {
         MyModel model;
 
+        private string str;
+
+        public string Str
+        {
+            get { return Str; }
+            set
+            {
+                Str = value;
+                notifyPropertyChanged(str);
+            }
+        }
+
+
         public MyViewModel(MyModel model)
         {
             this.model = model;
+        }
+
+
+        public bool login(string userName, string password)
+        {
+            return model.login(userName, password);
         }
 
         #region event handler
@@ -31,6 +50,8 @@ namespace MyForum.ViewModel
         {
             return model.register(firstName, lastName, email, userName, password);
         }
+
+       
         #endregion
     }
 }

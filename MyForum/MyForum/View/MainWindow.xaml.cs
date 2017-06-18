@@ -25,14 +25,17 @@ namespace MyForum
     public partial class MainWindow : Window
     {
         MyViewModel vm;
+        LogInC loginC;
 
         public MainWindow()
         {
             InitializeComponent();
             vm = new MyViewModel(new MyModel());
             this.DataContext = vm;
-            LogInC login = new LogInC(vm);
-            sp.Children.Add(login);
+            loginC = new LogInC(vm,this);
+            sp.Children.Add(loginC);
+            MainForumC mainForumC = new MainForumC(vm);
+            mainGrid.Children.Add(mainForumC);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,10 +45,28 @@ namespace MyForum
             register.Show();
         }
 
-        private void LogInC_Loaded(object sender, RoutedEventArgs e)
+        //this function call after we check in the model if the user are exist
+        public void existUser(bool existUser,string userName)
         {
-            
-            vm.login(e.)
+            //check if the user exist
+            if (existUser)
+            {
+                sp.Children.Clear();
+                //add welcome message for this user
+                displayWelcomeMessage(userName);
+            }
+            else
+            {
+                MessageBox.Show("The details are not correct. please try again");
+            }
+        }
+
+        //create welcome message for specific user name
+        public void displayWelcomeMessage(string userName)
+        {
+            TextBlock tb = new TextBlock();
+            tb.Text = "Hello " + userName + ", welcome to SIDY forums";
+            sp.Children.Add(tb);
         }
     }
 }

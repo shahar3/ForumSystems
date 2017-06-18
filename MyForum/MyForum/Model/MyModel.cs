@@ -12,10 +12,23 @@ namespace MyForum.Model
     public class MyModel : INotifyPropertyChanged
     {
         Dictionary<string, User> users = new Dictionary<string, User>();
-
+            
         public MyModel()
         {
             loadUsers();
+        }
+
+        //This function check if the details for login are correct
+        public bool login(string userName, string password)
+        {
+            if (users.ContainsKey(userName))
+            {
+                if (users[userName].Password == password)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         //load users that are regitred to the forum

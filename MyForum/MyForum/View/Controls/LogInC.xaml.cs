@@ -22,16 +22,20 @@ namespace MyForum.View.Controls
     public partial class LogInC : UserControl
     {
         MyViewModel vm;
+        MainWindow mw;
 
-        public LogInC(MyViewModel vm)
+        public LogInC(MyViewModel vm,MainWindow mw)
         {
             InitializeComponent();
             this.vm = vm;
+            this.mw = mw;
         }
 
         //This event triggered when the user press on log in button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            bool existUser = vm.login(TbUserName.Text,TbPassword.Password);
+            mw.existUser(existUser,TbUserName.Text);
         }
     }
 }
