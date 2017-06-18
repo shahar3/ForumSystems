@@ -48,9 +48,7 @@ namespace MyForum.View.Controls
 
         private void addTopic()
         {
-
+            addTopic newTopic = new addTopic();
         }
-
-      
     }
 }
