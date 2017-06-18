@@ -44,8 +44,8 @@ namespace MyForum
             {
                 case "politics":
                     mainGrid.Children.Clear();
-                    PoliticsForumC pf = new PoliticsForumC();
-                    mainGrid.Children.Add(pf);
+                   // PoliticsForumC pf = new PoliticsForumC();
+                   // mainGrid.Children.Add(pf);
                     break;
                     
             }

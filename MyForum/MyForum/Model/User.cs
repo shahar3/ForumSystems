@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
+    [Serializable]
     class User : Observer
     {
         #region fields
