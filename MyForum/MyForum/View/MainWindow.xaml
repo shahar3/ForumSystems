@@ -23,10 +23,9 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-            <StackPanel Background="Blue" Name="sp">
-            <StackPanel Grid.Column="1" Grid.RowSpan="5" Background="Blue" Name="sp">
+                <StackPanel Background="Blue" Name="sp">
                 <Button Click="Button_Click">Register</Button>
-            </StackPanel>
+                </StackPanel>
                 <ListView HorizontalAlignment="Center" Grid.Row="1" Name="notificationLV">Notifications</ListView>
             </Grid>
         </Grid>

@@ -23,7 +23,6 @@ namespace MyForum.Model
         {
             loadUsers();
             //test
-            saveTopics();
             loadTopics();
             //endtest
             loadForumsMessages();
@@ -76,23 +75,7 @@ namespace MyForum.Model
 
         private void saveTopics()
         {
-            User user1 = new User("daniel", "verman", "daniverman@gmail.com", "123456", "daniel Verman", true, true,
-                true);
-            Topic t1 = new Topic("subject1", "content1", user1);
-            Topic t3 = new Topic("subject11", "content11", user1);
-            List<Topic> politicsTopics = new List<Topic>();
-            politicsTopics.Add(t1);
-            politicsTopics.Add(t3);
-            User user2 = new User("hhhhhhhhhhhhhh");
-            Topic t2 = new Topic("subject2", "content2", user1);
-            List<Topic> sportTopics = new List<Topic>();
-            sportTopics.Add(t2);
-            topics.Add("politics", politicsTopics);
-            topics.Add("sport", sportTopics);
-            //save the dictionary
-            // Create a FileStream that will write data to file.
-            WriteToBinaryFile<Dictionary<string, List<Topic>>>("topics.txt", topics, false);
-            topics.Clear();
+           
         }
 
         public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
@@ -143,7 +126,19 @@ namespace MyForum.Model
                         bool canDeleteMsg = sr.ReadBoolean();
                         bool canDeleteTopic = sr.ReadBoolean();
                         bool canBanUser = sr.ReadBoolean();
-                        User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser);
+                        List<string> notification = new List<string>();
+                        int numOfNotification = Int32.Parse(sr.ReadString());
+                        for (int i = 0; i < numOfNotification; i++)
+                        {
+                            notification.Add(sr.ReadString());
+                        }
+                        List<string> subForumList = new List<string>();
+                        int numOfSubForum = Int32.Parse(sr.ReadString());
+                        for (int i = 0; i < numOfSubForum; i++)
+                        {
+                            subForumList.Add(sr.ReadString());
+                        }
+                        User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser,notification,subForumList);
                         users.Add(user.UserName, user);
                     }
                 }
@@ -164,7 +159,7 @@ namespace MyForum.Model
                 MessageBox.Show("There is a user with the same username (" + userName + ")");
                 return false;
             }
-            users[userName] = new User(firstName, lastName, email, password, userName, false, false, false);
+            users[userName] = new User(firstName, lastName, email, password, userName, false, false, false,null,null);
             addUserToFile(users[userName]);
             MessageBox.Show("User was added successfully");
             return true;
@@ -184,6 +179,16 @@ namespace MyForum.Model
                     bw.Write(user.CanDeleteMsg);
                     bw.Write(user.CanDeleteTopic);
                     bw.Write(user.CanBanUser);
+                    bw.Write(user.NotificationList.Count);
+                    foreach (string noti in user.NotificationList)
+                    {
+                        bw.Write(noti);
+                    }
+                    bw.Write(user.SubForumsList.Count);
+                    foreach (string subF in user.SubForumsList)
+                    {
+                        bw.Write(subF);
+                    }
                 }
             }
         }

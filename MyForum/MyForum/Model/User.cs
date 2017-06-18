@@ -48,7 +48,7 @@ namespace MyForum.Model
         public List<string> NotificationList { get => notificationList; set => notificationList = value; }
 
         //the default constructor
-        public User(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser)
+        public User(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser,List<string> notification,List<string> subForumList)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -58,8 +58,22 @@ namespace MyForum.Model
             this.CanDeleteMsg = canDeleteMsg;
             this.CanDeleteTopic = canDeleteTopic;
             this.CanBanUser = canBanUser;
-            notificationList = new List<string>();
-            subForumsList = new List<string>();
+            if (notification != null)
+            {
+                this.notificationList = notification;
+            }
+            else
+            {
+                this.notificationList = new List<string>();
+            }
+            if(subForumsList != null)
+            {
+                this.subForumsList = subForumList;
+            }
+            else
+            {
+                this.subForumsList = new List<string>();
+            }
         }
 
         public User(string line)
