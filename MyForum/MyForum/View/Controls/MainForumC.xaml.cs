@@ -34,7 +34,8 @@ namespace MyForum.View.Controls
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<Topic> topics = vm.getTopics("politics");
+            // List<Topic> topics = vm.getTopics("politics");
+            mw.openForum("politics");
         }
     }
 }

@@ -9,12 +9,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*" />
-            <RowDefinition Height="90*" />
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Name="SubForumNameLbl" HorizontalAlignment="Center" Grid.RowSpan="1" VerticalAlignment="Center"
                FontWeight="Bold" Foreground="DarkBlue">
             Forum Name
         </Label>
-        <StackPanel Name="StackPanel"></StackPanel>
+        <StackPanel Grid.Row="1" Name="StackPanel"></StackPanel>
+        <Button Grid.Row="2" Name="AddDiscussionButton" Click="AddDiscussionButton_Click">Add Topic</Button>
     </Grid>
 </UserControl>
