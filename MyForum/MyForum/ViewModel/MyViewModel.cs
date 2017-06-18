@@ -56,13 +56,14 @@ namespace MyForum.ViewModel
             return model.register(firstName, lastName, email, userName, password);
         }
 
-        internal void sendNotification(object content)
+        internal void sendNotification(string forumName,string userName)
         {
         }
 
         internal void addTopic(Topic topic, string forumName)
         {
             model.addTopic(topic, forumName);
+            model.sendNotification(forumName,topic.messageOwner.UserName);
         }
 
         #endregion event handler
@@ -75,6 +76,11 @@ namespace MyForum.ViewModel
         internal void close()
         {
             model.close();
+        }
+
+        internal void follow(User user,string forumName)
+        {
+            model.follow(user,forumName);
         }
     }
 }

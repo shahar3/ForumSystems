@@ -19,9 +19,16 @@
                 <ColumnDefinition Width="545*"></ColumnDefinition>
                 <ColumnDefinition Width="203*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1" Grid.RowSpan="5" Background="Blue" Name="sp">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Background="Blue" Name="sp">
                 <Button Click="Button_Click">Register</Button>
-            </StackPanel>
+                </StackPanel>
+                <ListView HorizontalAlignment="Center" Grid.Row="1" Name="notificationLV">Notifications</ListView>
+            </Grid>
         </Grid>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" Foreground="DarkBlue">Welcome to SIDY forums</Label>
     </Grid>

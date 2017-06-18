@@ -17,6 +17,14 @@
             Forum Name
         </Label>
         <StackPanel Grid.Row="1" Name="StackPanel"></StackPanel>
-        <Button Grid.Row="2" Name="AddDiscussionButton" Click="AddDiscussionButton_Click">Add Topic</Button>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="AddDiscussionButton" Click="AddDiscussionButton_Click">Add Topic</Button>
+            <Button Grid.Column="1" Height="30" VerticalAlignment="Top" Click="Button_Click_1">Follow</Button>
+        </Grid>
+        <Button Grid.Row="0" Width="50" HorizontalAlignment="Left" Click="Button_Click">Back</Button>
     </Grid>
 </UserControl>
