@@ -68,6 +68,9 @@
     <Compile Include="View\Controls\SubForum.xaml.cs">
       <DependentUpon>SubForum.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\UserNotificationC.xaml.cs">
+      <DependentUpon>UserNotificationC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\SubForum.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\UserNotificationC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
