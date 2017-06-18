@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MyForum.Model;
 
 namespace MyForum.View.Controls
 {
     /// <summary>
-    /// Interaction logic for SubForum.xaml
+    /// Interaction logic for UserNotificationC.xaml
     /// </summary>
-    public partial class SubForum : UserControl
+    public partial class UserNotificationC : UserControl
     {
-        public SubForum()
+        public UserNotificationC()
         {
             InitializeComponent();
         }
