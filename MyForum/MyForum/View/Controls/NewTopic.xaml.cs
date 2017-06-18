@@ -33,5 +33,13 @@ namespace MyForum.View.Controls
             sf.addTopic(this.ContentTextBox.Text, this.SubjectTextBox.Text);
             this.Close();
         }
+
+        private void addNewTopic()
+        {
+        }
+
+        private void sendNotification()
+        {
+        }
     }
 }
