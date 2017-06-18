@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace MyForum
 {
@@ -24,32 +25,39 @@ namespace MyForum
     /// </summary>
     public partial class MainWindow : Window
     {
-        MyViewModel vm;
-        LogInC loginC;
+        private MyViewModel vm;
+        private LogInC loginC;
 
         public MainWindow()
         {
             InitializeComponent();
             vm = new MyViewModel(new MyModel());
             this.DataContext = vm;
-            loginC = new LogInC(vm,this);
+            loginC = new LogInC(vm, this);
             sp.Children.Add(loginC);
-            MainForumC mainForumC = new MainForumC(vm,this);
+            MainForumC mainForumC = new MainForumC(vm, this);
             mainGrid.Children.Add(mainForumC);
         }
 
         public void openForum(string forumName)
         {
+            SubForum subForum = new SubForum();
+            subForum.SubForumNameLbl.Content = forumName;
             switch (forumName)
             {
                 case "politics":
                     mainGrid.Children.Clear();
-                    PoliticsForumC pf = new PoliticsForumC();
-                    mainGrid.Children.Add(pf);
+                    mainGrid.Children.Add(subForum);
+                    List<Topic> topics = vm.getTopics(forumName);
+                    foreach (var topic in topics)
+                    {
+                        Discussion discussion = new Discussion();
+                        discussion.SubjectLabel.Content = topic.subject;
+                        discussion.nameLabel.Content = topic.messageOwner.UserName;
+                        subForum.StackPanel.Children.Add(discussion);
+                    }
                     break;
-                    
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -60,7 +68,7 @@ namespace MyForum
         }
 
         //this function call after we check in the model if the user are exist
-        public void existUser(bool existUser,string userName)
+        public void existUser(bool existUser, string userName)
         {
             //check if the user exist
             if (existUser)
