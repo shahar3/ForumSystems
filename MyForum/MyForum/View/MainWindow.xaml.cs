@@ -34,8 +34,22 @@ namespace MyForum
             this.DataContext = vm;
             loginC = new LogInC(vm,this);
             sp.Children.Add(loginC);
-            MainForumC mainForumC = new MainForumC(vm);
+            MainForumC mainForumC = new MainForumC(vm,this);
             mainGrid.Children.Add(mainForumC);
+        }
+
+        public void openForum(string forumName)
+        {
+            switch (forumName)
+            {
+                case "politics":
+                    mainGrid.Children.Clear();
+                    PoliticsForumC pf = new PoliticsForumC();
+                    mainGrid.Children.Add(pf);
+                    break;
+                    
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

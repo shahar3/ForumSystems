@@ -12,10 +12,18 @@ namespace MyForum.Model
     public class MyModel : INotifyPropertyChanged
     {
         Dictionary<string, User> users = new Dictionary<string, User>();
+        Dictionary<string, List<Topic>> topics = new Dictionary<string, List<Topic>>();
             
         public MyModel()
         {
             loadUsers();
+            loadForumsMessages();
+        }
+
+        //load the forums messages
+        private void loadForumsMessages()
+        {
+            
         }
 
         //This function check if the details for login are correct
@@ -57,6 +65,12 @@ namespace MyForum.Model
                     }
                 }
             }
+        }
+
+        //take the topic for specific forum
+        internal List<Topic> getTopics(string forumName)
+        {
+            return topics[forumName];
         }
 
         internal bool register(string firstName, string lastName, string email, string userName, string password)

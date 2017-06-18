@@ -20,13 +20,13 @@ namespace MyForum.Model
             Description = description;
             Moderator = moderator;
             Users = new List<Observer>();
-            Topics = new ObservableCollection<Topic>();
+            topics = new Dictionary<string,Topic>();
         }
 
         //add the topic to the topics list
         public override void addTopic(Topic topic)
         {
-            Topics.Add(topic);
+            topics.Add(topic.messageOwner.UserName,topic);
             //send notification to all sub forum members
             string message = "Hello, there is a new topic that was added to forum that you are regisred";
             string title = "New topic was added in " + ForumName;
@@ -64,11 +64,11 @@ namespace MyForum.Model
         //remove thr topic
         private void deleteTopic(Topic topicToDelete)
         {
-            foreach (Topic topic in Topics)
+            foreach (string userNameTopic in topics.Keys)
             {
-                if (topic.id == topicToDelete.id)
+                if (userNameTopic == topicToDelete.messageOwner.UserName)
                 {
-                    Topics.Remove(topic);
+                    topics.Remove(userNameTopic);
                 }
             }
         }

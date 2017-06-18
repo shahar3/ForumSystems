@@ -17,7 +17,6 @@ namespace MyForum.Model
         private string description;
         private List<User> moderator;
         private List<Observer> users;
-        private ObservableCollection<Topic> topics;
         #endregion
 
         public string Logo { get => logo; set => logo = value; }
@@ -26,7 +25,7 @@ namespace MyForum.Model
         public string Description { get => description; set => description = value; }
         internal List<User> Moderator { get => moderator; set => moderator = value; }
         internal List<Observer> Users { get => users; set => users = value; }
-        internal ObservableCollection<Topic> Topics { get => topics; set => topics = value; }
+        internal Dictionary<string, Topic> topics { get => topics; set => topics = value; }
 
         abstract public void addTopic(Topic topic);
         abstract public void removeTopic(Topic topicToDelete, User user);

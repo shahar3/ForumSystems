@@ -46,6 +46,11 @@ namespace MyForum.ViewModel
             }
         }
 
+        internal List<Topic> getTopics(string forumName)
+        {
+            return model.getTopics(forumName);
+        }
+
         internal bool register(string firstName, string lastName, string email, string userName, string password)
         {
             return model.register(firstName, lastName, email, userName, password);
