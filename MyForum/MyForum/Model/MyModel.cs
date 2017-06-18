@@ -3,27 +3,97 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace MyForum.Model
 {
+    [Serializable]
     public class MyModel : INotifyPropertyChanged
     {
         Dictionary<string, User> users = new Dictionary<string, User>();
+        
         Dictionary<string, List<Topic>> topics = new Dictionary<string, List<Topic>>();
-            
+        private BinaryFormatter formatter = new BinaryFormatter();
+
         public MyModel()
         {
             loadUsers();
+            //test
+            saveTopics();
+            loadTopics();
+            //endtest
             loadForumsMessages();
+        }
+
+        private void loadTopics()
+        {
+                // Check if we had previously Save information of our friends
+                // previously
+                if (File.Exists("topics.txt"))
+                {
+
+                    try
+                    {
+                        // Create a FileStream will gain read access to the 
+                        // data file.
+                        FileStream readerFileStream = new FileStream("topics.txt",
+                            FileMode.Open, FileAccess.Read);
+                        // Reconstruct information of our friends from file.
+                        this.topics = (Dictionary<String, List<Topic>>)
+                            this.formatter.Deserialize(readerFileStream);
+                        // Close the readerFileStream when we are done
+                        readerFileStream.Close();
+
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("There seems to be a file that contains " +
+                            "friends information but somehow there is a problem " +
+                            "with reading it.");
+                    } // end try-catch
+
+                } // end if
+        }
+
+        private void saveTopics()
+        {
+            User user1 = new User("fgfg");
+            Topic t1 = new Topic("subject1", "content1", user1);
+            Topic t3 = new Topic("subject11", "content11", user1);
+            List<Topic> politicsTopics = new List<Topic>();
+            politicsTopics.Add(t1);
+            politicsTopics.Add(t3);
+            User user2 = new User("hhhhhhhhhhhhhh");
+            Topic t2 = new Topic("subject2", "content2", user2);
+            List<Topic> sportTopics = new List<Topic>();
+            sportTopics.Add(t2);
+            topics.Add("politics", politicsTopics);
+            topics.Add("sport", sportTopics);
+            //save the dictionary
+            // Create a FileStream that will write data to file.
+            WriteToBinaryFile<Dictionary<string, List<Topic>>>("topics.txt",topics,false);
+            topics.Clear();
+
+
+
+        }
+
+        public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
+        {
+            using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binaryFormatter.Serialize(stream, objectToWrite);
+            }
         }
 
         //load the forums messages
         private void loadForumsMessages()
         {
-            
+
         }
 
         //This function check if the details for login are correct
