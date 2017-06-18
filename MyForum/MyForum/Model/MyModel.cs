@@ -20,6 +20,8 @@ namespace MyForum.Model
 
         public MyModel()
         {
+            topics.Add("politics", new List<Topic>());
+
             loadUsers();
             //test
             loadTopics();
@@ -57,13 +59,13 @@ namespace MyForum.Model
             saveTopics();
         }
 
-        internal void sendNotification(string forumName,string userName)
+        internal void sendNotification(string forumName, string userName)
         {
             foreach (string user in users.Keys)
             {
                 foreach (string subForum in users[user].SubForumsList)
                 {
-                    if(forumName == subForum && user != userName)
+                    if (forumName == subForum && user != userName)
                     {
                         users[user].NotificationList.Add(forumName + " " + userName);
                     }
@@ -72,13 +74,14 @@ namespace MyForum.Model
         }
 
         //add this forum to sub forum list in the user
-        internal void follow(User user,string forumName)
+        internal void follow(User user, string forumName)
         {
             user.SubForumsList.Add(forumName);
         }
 
         private void saveTopics()
         {
+            WriteToBinaryFile<Dictionary<string, List<Topic>>>("topics.txt", topics, false);
         }
 
         public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
@@ -141,7 +144,7 @@ namespace MyForum.Model
                         {
                             subForumList.Add(sr.ReadString());
                         }
-                        User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser,notification,subForumList);
+                        User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser, notification, subForumList);
                         users.Add(user.UserName, user);
                     }
                 }
@@ -151,6 +154,10 @@ namespace MyForum.Model
         //take the topic for specific forum
         internal List<Topic> getTopics(string forumName)
         {
+            if (topics.Count == 0 && !topics.ContainsKey(forumName))
+            {
+                return new List<Topic>();
+            }
             return topics[forumName];
         }
 
@@ -162,7 +169,7 @@ namespace MyForum.Model
                 MessageBox.Show("There is a user with the same username (" + userName + ")");
                 return false;
             }
-            users[userName] = new User(firstName, lastName, email, password, userName, false, false, false,null,null);
+            users[userName] = new User(firstName, lastName, email, password, userName, false, false, false, null, null);
             addUserToFile(users[userName]);
             MessageBox.Show("User was added successfully");
             return true;
@@ -182,12 +189,12 @@ namespace MyForum.Model
                     bw.Write(user.CanDeleteMsg);
                     bw.Write(user.CanDeleteTopic);
                     bw.Write(user.CanBanUser);
-                    bw.Write(user.NotificationList.Count);
+                    bw.Write(user.NotificationList.Count.ToString());
                     foreach (string noti in user.NotificationList)
                     {
                         bw.Write(noti);
                     }
-                    bw.Write(user.SubForumsList.Count);
+                    bw.Write(user.SubForumsList.Count.ToString());
                     foreach (string subF in user.SubForumsList)
                     {
                         bw.Write(subF);
