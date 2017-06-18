@@ -12,6 +12,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Button Grid.Row="0" HorizontalAlignment="Left" Width="100" Click="Button_Click_1">Home</Button>
         <Grid Grid.Row="1" Grid.Column="0" Name="mainGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="545*"></ColumnDefinition>
@@ -23,6 +24,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
             <StackPanel Background="Blue" Name="sp">
+            <StackPanel Grid.Column="1" Grid.RowSpan="5" Background="Blue" Name="sp">
                 <Button Click="Button_Click">Register</Button>
             </StackPanel>
                 <ListView HorizontalAlignment="Center" Grid.Row="1" Name="notificationLV">Notifications</ListView>

@@ -26,7 +26,7 @@ namespace MyForum.View.Controls
         {
             m_user = _vm.GetUser(Name);
             if (Name == null || !m_user.havePermission(SubForumNameLbl.Content.ToString()))
-                MessageBox.Show(SubForumNameLbl.Content.ToString());
+                MessageBox.Show("You dont have premission to add topic in " + SubForumNameLbl.Content.ToString());
             else
             {
                 var newTopic = new NewTopic(this);

@@ -209,6 +209,7 @@ namespace MyForum.Model
 
         internal void addTopic(Topic topic, string subForumName)
         {
+            topics[subForumName].Add(topic);
         }
     }
 }
