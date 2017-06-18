@@ -29,5 +29,10 @@ namespace MyForum.View.Controls
             sendNotification();
             addNewTopic();
         }
+
+        private void sendNotification()
+        {
+            
+        }
     }
 }
