@@ -6,7 +6,8 @@
         xmlns:controls="clr-namespace:MyForum.View.Controls"
         xmlns:local="clr-namespace:MyForum"
         mc:Ignorable="d"
-        Title="Forums Ver 1.0" Height="768" Width="1024">
+        Closing="MainWindow_OnClosing "
+         Title="Forums Ver 1.0" Height="768" Width="1024">
     <Grid Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>

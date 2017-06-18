@@ -71,5 +71,10 @@ namespace MyForum.ViewModel
         {
             return model.getUser(userName);
         }
+
+        internal void close()
+        {
+            model.close();
+        }
     }
 }

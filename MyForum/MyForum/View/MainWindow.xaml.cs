@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using MyForum.Model;
 using MyForum.View;
@@ -99,6 +100,11 @@ namespace MyForum
                 this.mainGrid.Children.Remove(this.sf);
                 this.mainGrid.Children.Add(this.mainForumC);
             }
+        }
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            vm.close();
         }
     }
 }

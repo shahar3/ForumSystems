@@ -53,6 +53,11 @@ namespace MyForum.Model
             } // end if
         }
 
+        internal void close()
+        {
+            saveTopics();
+        }
+
         private void saveTopics()
         {
             User user1 = new User("daniel", "verman", "daniverman@gmail.com", "123456", "daniel Verman", true, true,
