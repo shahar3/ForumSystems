@@ -10,7 +10,7 @@ namespace MyForum.ViewModel
 {
     public class MyViewModel : INotifyPropertyChanged
     {
-        MyModel model;
+        private MyModel model;
 
         private string str;
 
@@ -24,12 +24,10 @@ namespace MyForum.ViewModel
             }
         }
 
-
         public MyViewModel(MyModel model)
         {
             this.model = model;
         }
-
 
         public bool login(string userName, string password)
         {
@@ -37,7 +35,9 @@ namespace MyForum.ViewModel
         }
 
         #region event handler
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void notifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -56,7 +56,11 @@ namespace MyForum.ViewModel
             return model.register(firstName, lastName, email, userName, password);
         }
 
-       
-        #endregion
+        #endregion event handler
+
+        internal User GetUser(string userName)
+        {
+            return model.getUser(userName);
+        }
     }
 }

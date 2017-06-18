@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyForum.Model;
+using MyForum.ViewModel;
 
 namespace MyForum.View.Controls
 {
@@ -21,9 +22,36 @@ namespace MyForum.View.Controls
     /// </summary>
     public partial class SubForum : UserControl
     {
-        public SubForum()
+        private User m_user;
+        private string name;
+        private MyViewModel _vm;
+
+        public SubForum(MyViewModel vm)
         {
+            _vm = vm;
             InitializeComponent();
+        }
+
+        private void AddDiscussionButton_Click(object sender, RoutedEventArgs e)
+        {
+            m_user = _vm.GetUser(name);
+            if (m_user.havePermission(SubForumNameLbl.Content))
+            {
+                addTopic();
+                addNotification();
+            }
+            else
+            {
+                MessageBox.Show("You Not Have The Permission To Add Topic In This Forum");
+            }
+        }
+
+        private void addTopic()
+        {
+        }
+
+        private void addNotification()
+        {
         }
     }
 }
