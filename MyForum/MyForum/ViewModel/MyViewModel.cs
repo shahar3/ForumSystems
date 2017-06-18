@@ -56,6 +56,11 @@ namespace MyForum.ViewModel
             return model.register(firstName, lastName, email, userName, password);
         }
 
+        internal void sendNotification(object content)
+        {
+            
+        }
+
         #endregion event handler
 
         internal User GetUser(string userName)

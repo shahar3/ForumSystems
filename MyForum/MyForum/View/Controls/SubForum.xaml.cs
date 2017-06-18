@@ -35,23 +35,21 @@ namespace MyForum.View.Controls
         private void AddDiscussionButton_Click(object sender, RoutedEventArgs e)
         {
             m_user = _vm.GetUser(name);
-            if (m_user.havePermission(SubForumNameLbl.Content))
+            if (!m_user.havePermission(SubForumNameLbl.Content) || name == null)
             {
-                addTopic();
-                addNotification();
+                MessageBox.Show("You Not Have The Permission To Add Topic In This Forum");
             }
             else
             {
-                MessageBox.Show("You Not Have The Permission To Add Topic In This Forum");
+                addTopic();
             }
         }
 
         private void addTopic()
         {
+
         }
 
-        private void addNotification()
-        {
-        }
+      
     }
 }

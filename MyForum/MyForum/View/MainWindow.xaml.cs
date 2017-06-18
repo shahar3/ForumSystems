@@ -35,7 +35,14 @@ namespace MyForum
             switch (forumName)
             {
                 case "politics":
-                    subForum.Name = user.UserName;
+                    if (user != null)
+                    {
+                        subForum.Name = user.UserName;
+                    }
+                    else
+                    {
+                        subForum.Name = null;
+                    }
                     mainGrid.Children.Remove(mainForumC);
                     mainGrid.Children.Add(subForum);
                     var topics = vm.getTopics(forumName);
