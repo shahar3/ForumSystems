@@ -56,14 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\Controls\addTopic.xaml.cs">
-      <DependentUpon>addTopic.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Controls\Discussion.xaml.cs">
       <DependentUpon>Discussion.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\MainForumC.xaml.cs">
       <DependentUpon>MainForumC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\NewTopic.xaml.cs">
+      <DependentUpon>NewTopic.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\SubForum.xaml.cs">
       <DependentUpon>SubForum.xaml</DependentUpon>
@@ -74,10 +74,6 @@
     <Compile Include="View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Controls\addTopic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Controls\Discussion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\MainForumC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\NewTopic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

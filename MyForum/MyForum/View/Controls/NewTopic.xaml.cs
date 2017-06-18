@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MyForum.View.Controls
 {
     /// <summary>
-    /// Interaction logic for addTopic.xaml
+    /// Interaction logic for NewTopic.xaml
     /// </summary>
-    public partial class addTopic : UserControl
+    public partial class NewTopic : Window
     {
-        public addTopic()
+        public NewTopic()
         {
             InitializeComponent();
         }
@@ -29,16 +28,6 @@ namespace MyForum.View.Controls
         {
             sendNotification();
             addNewTopic();
-        }
-
-        private void addNewTopic()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void sendNotification()
-        {
-            throw new NotImplementedException();
         }
     }
 }
