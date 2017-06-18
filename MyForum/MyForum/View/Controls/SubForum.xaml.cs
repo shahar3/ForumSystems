@@ -47,7 +47,19 @@ namespace MyForum.View.Controls
 
         private void addTopic()
         {
-            addTopic newTopic = new addTopic();
+            NewTopic newTopic = new NewTopic();
+            newTopic.Show();
+            string TopicSubject = newTopic.SubjectTextBox.Text;
+            string TopicContent = newTopic.ContentTextBox.Text;
+            if (TopicSubject != "" && TopicContent != "")
+            {
+                sendNotfi(TopicSubject, TopicContent);
+            }
+        }
+
+        private void sendNotfi(string topicSubject, string topicContent)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -26,8 +26,13 @@ namespace MyForum.View.Controls
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            sendNotification();
             addNewTopic();
+            sendNotification();
+            this.Close();
+        }
+
+        private void addNewTopic()
+        {
         }
     }
 }
