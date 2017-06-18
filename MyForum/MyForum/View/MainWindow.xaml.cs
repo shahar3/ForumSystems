@@ -44,6 +44,7 @@ namespace MyForum
                         subForum.Name = null;
                     }
                     mainGrid.Children.Remove(mainForumC);
+
                     mainGrid.Children.Add(subForum);
                     var topics = vm.getTopics(forumName);
                     foreach (var topic in topics)

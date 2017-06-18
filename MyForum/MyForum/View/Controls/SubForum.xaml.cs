@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MyForum.Model;
 using MyForum.ViewModel;
 
@@ -22,9 +11,8 @@ namespace MyForum.View.Controls
     /// </summary>
     public partial class SubForum : UserControl
     {
+        private readonly MyViewModel _vm;
         private User m_user;
-        private string name;
-        private MyViewModel _vm;
 
         public SubForum(MyViewModel vm)
         {
@@ -32,35 +20,45 @@ namespace MyForum.View.Controls
             InitializeComponent();
         }
 
+        public string Name { get; set; }
+
         private void AddDiscussionButton_Click(object sender, RoutedEventArgs e)
         {
-            m_user = _vm.GetUser(name);
-            if (!m_user.havePermission(SubForumNameLbl.Content.ToString()) || name == null)
-            {
+            m_user = _vm.GetUser(Name);
+            if (Name == null || !m_user.havePermission(SubForumNameLbl.Content.ToString()))
                 MessageBox.Show(SubForumNameLbl.Content.ToString());
-                //MessageBox.Show("You Not Have The Permission To Add Topic In This Forum");
-            }
             else
             {
-                addTopic();
+                var newTopic = new NewTopic(this);
+                newTopic.Show();
             }
         }
 
-        private void addTopic()
+        public void addTopic(string content, string subject)
         {
-            NewTopic newTopic = new NewTopic();
-            newTopic.Show();
-            string TopicSubject = newTopic.SubjectTextBox.Text;
-            string TopicContent = newTopic.ContentTextBox.Text;
+            var TopicSubject = subject;
+            var TopicContent = content;
             if (TopicSubject != "" && TopicContent != "")
             {
                 sendNotfi(TopicSubject, TopicContent);
+                Discussion d = new Discussion();
+                d.SubjectLabel.Content = TopicSubject;
+                d.nameLabel.Content = Name;
+                this.StackPanel.Children.Add(d);
+
+                //add topic to topic dictinary
+                _vm.addTopic(new Topic(TopicSubject, TopicContent, m_user), this.SubForumNameLbl.Content.ToString());
             }
         }
 
         private void sendNotfi(string topicSubject, string topicContent)
         {
-            _vm.sendNotification(SubForumNameLbl.Content.ToString(),name);
+            // throw new NotImplementedException();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Go back to mainForum
         }
     }
 }

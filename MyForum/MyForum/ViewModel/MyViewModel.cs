@@ -58,6 +58,11 @@ namespace MyForum.ViewModel
 
         internal void sendNotification(string forumName,string userName)
         {
+        }
+
+        internal void addTopic(Topic topic, string forumName)
+        {
+            model.addTopic(topic, forumName);
             model.sendNotification(forumName,userName);
         }
 
