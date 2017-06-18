@@ -16,6 +16,7 @@ namespace MyForum
         private readonly MainForumC mainForumC;
         private User user;
         private readonly MyViewModel vm;
+        private SubForum sf;
 
         public MainWindow()
         {
@@ -31,6 +32,7 @@ namespace MyForum
         public void openForum(string forumName)
         {
             var subForum = new SubForum(vm);
+            sf = subForum;
             subForum.SubForumNameLbl.Content = forumName;
             switch (forumName)
             {
@@ -88,6 +90,15 @@ namespace MyForum
             var tb = new TextBlock();
             tb.Text = "Hello " + userName + ", welcome to SIDY forums";
             sp.Children.Add(tb);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (this.sf != null)
+            {
+                this.mainGrid.Children.Remove(this.sf);
+                this.mainGrid.Children.Add(this.mainForumC);
+            }
         }
     }
 }
