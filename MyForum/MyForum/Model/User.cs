@@ -18,6 +18,8 @@ namespace MyForum.Model
         private string password;
         private string userName;
         private List<string> subForumsList;
+        private List<string> notificationList;
+
 
         #endregion fields
 
@@ -42,6 +44,7 @@ namespace MyForum.Model
         public bool CanDeleteTopic { get => canDeleteTopic; set => canDeleteTopic = value; }
         public bool CanBanUser { get => canBanUser; set => canBanUser = value; }
         public List<string> SubForumsList { get => subForumsList; set => subForumsList = value; }
+        public List<string> NotificationList { get => notificationList; set => notificationList = value; }
 
         //the default constructor
         public User(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser)

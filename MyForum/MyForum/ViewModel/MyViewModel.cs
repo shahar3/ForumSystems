@@ -56,9 +56,9 @@ namespace MyForum.ViewModel
             return model.register(firstName, lastName, email, userName, password);
         }
 
-        internal void sendNotification(object content)
+        internal void sendNotification(string forumName,string userName)
         {
-            
+            model.sendNotification(forumName,userName);
         }
 
         #endregion event handler

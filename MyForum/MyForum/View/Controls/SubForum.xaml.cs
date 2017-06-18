@@ -60,7 +60,7 @@ namespace MyForum.View.Controls
 
         private void sendNotfi(string topicSubject, string topicContent)
         {
-            throw new NotImplementedException();
+            _vm.sendNotification(SubForumNameLbl.Content.ToString(),name);
         }
     }
 }

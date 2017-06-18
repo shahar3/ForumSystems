@@ -53,6 +53,20 @@ namespace MyForum.Model
             } // end if
         }
 
+        internal void sendNotification(string forumName,string userName)
+        {
+            foreach (string user in users.Keys)
+            {
+                foreach (string subForum in users[user].SubForumsList)
+                {
+                    if(forumName == subForum && user != userName)
+                    {
+                        //////////////////////////////////////////////////////////////////////
+                    }
+                }
+            }
+        }
+
         private void saveTopics()
         {
             User user1 = new User("daniel", "verman", "daniverman@gmail.com", "123456", "daniel Verman", true, true,
