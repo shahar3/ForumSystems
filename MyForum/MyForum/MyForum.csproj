@@ -79,6 +79,9 @@
     <Compile Include="View\Controls\NewTopic.xaml.cs">
       <DependentUpon>NewTopic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\searchResult.xaml.cs">
+      <DependentUpon>searchResult.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\SubForumControl.xaml.cs">
       <DependentUpon>SubForumControl.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\NewTopic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\searchResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

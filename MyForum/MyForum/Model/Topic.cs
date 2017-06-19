@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace MyForum.Model
 {
     [Serializable]
-    class Topic
+    internal class Topic
     {
         public List<Message> messages;
         public string subject;
         public string content;
         public RegisteredUser openedBy;
-        private string userFirstOpenMsgName;
+        public string userFirstOpenMsgName;
 
         public Topic(string subject,string content,RegisteredUser user)
         {
@@ -22,6 +22,11 @@ namespace MyForum.Model
             this.subject = subject;
             openedBy = user;
             userFirstOpenMsgName = openedBy.UserName;
+        }
+
+        public override string ToString()
+        {
+            return "subject : " +subject + " by : " + userFirstOpenMsgName;
         }
     }
 }
