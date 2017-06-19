@@ -15,7 +15,7 @@
             <ColumnDefinition Width="4*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border Background="Black" Grid.ColumnSpan="2" />
+        <Border Background="Black" Grid.ColumnSpan="3" />
         <Grid Name="forumGrid" Grid.ColumnSpan="2" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -28,41 +28,51 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalAlignment="Center" FontWeight="Bold">Politics Forum</Label>
                 <Button Grid.Column="1" Background="DarkBlue" Click="Button_Click">Show</Button>
+                <Button Grid.Column="2" Background="DarkBlue" Click="Button_Click_1">follow</Button>
             </Grid>
             <Grid Name="economicsGrid" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center">Economics Forum</Label>
-                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+                <Button Grid.Column="1" Background="DarkBlue" Click="Button_Click_6">Show</Button>
+                <Button Grid.Column="2" Background="DarkBlue" Click="Button_Click_2">follow</Button>
             </Grid>
             <Grid Name="sportGrid" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center">SportForum</Label>
-                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+                <Button Grid.Column="1" Background="DarkBlue" Click="Button_Click_7">Show</Button>
+                <Button Grid.Column="2" Background="DarkBlue" Click="Button_Click_3">follow</Button>
             </Grid>
             <Grid Name="programmingGrid" Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalAlignment="Center" FontWeight="Bold">Programming Forum</Label>
-                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+                <Button Grid.Column="1" Background="DarkBlue" Click="Button_Click_8">Show</Button>
+                <Button Grid.Column="2" Background="DarkBlue" Click="Button_Click_4" >follow</Button>
             </Grid>
             <Grid Name="generalGrid" Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalAlignment="Center" FontWeight="Bold">GeneralForum</Label>
-                <Button Grid.Column="1" Background="DarkBlue">Show</Button>
+                <Button Grid.Column="1" Background="DarkBlue" Click="Button_Click_9">Show</Button>
+                <Button Grid.Column="2" Background="DarkBlue" Click="Button_Click_5">follow</Button>
             </Grid>
         </Grid>
         <Label HorizontalAlignment="Center"  Grid.ColumnSpan="2" VerticalAlignment="Center" FontWeight="Bold" Foreground="DarkBlue">Forums</Label>

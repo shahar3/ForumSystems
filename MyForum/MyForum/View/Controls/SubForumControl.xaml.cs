@@ -70,20 +70,5 @@ namespace MyForum.View.Controls
         {
             //Go back to mainForum
         }
-
-        //follow forum
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            m_user = _vm.GetUser(Name);
-            if (!m_user.SubForumsList.Contains(SubForumNameLbl.Content.ToString()))
-            {
-                _vm.follow(m_user, SubForumNameLbl.Content.ToString());
-                MessageBox.Show("You are follow " + SubForumNameLbl.Content.ToString() + " forum!");
-            }
-            else
-            {
-                MessageBox.Show("You are already follow " + SubForumNameLbl.Content.ToString() + " forum");
-            }
-        }
     }
 }

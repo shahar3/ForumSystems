@@ -143,6 +143,7 @@ namespace MyForum.Model
             {
                 if (this.forum.users[userName].Password == password)
                 {
+                    this.forum.users[userName].statusActive = true;
                     return true;
                 }
             }

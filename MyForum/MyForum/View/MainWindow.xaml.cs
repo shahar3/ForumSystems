@@ -35,29 +35,24 @@ namespace MyForum
             var subForum = new SubForumControl(vm);
             sf = subForum;
             subForum.SubForumNameLbl.Content = forumName;
-            switch (forumName)
+            if (user != null)
             {
-                case "politics":
-                    if (user != null)
-                    {
-                        subForum.Name = user.UserName;
-                    }
-                    else
-                    {
-                        subForum.Name = null;
-                    }
-                    mainGrid.Children.Remove(mainForumC);
+                subForum.Name = user.UserName;
+            }
+            else
+            {
+                subForum.Name = null;
+            }
+            mainGrid.Children.Remove(mainForumC);
 
-                    mainGrid.Children.Add(subForum);
-                    var topics = vm.getTopics(forumName);
-                    foreach (var topic in topics)
-                    {
-                        var discussion = new Discussion();
-                        discussion.SubjectLabel.Content = topic.subject;
-                        discussion.nameLabel.Content = topic.openedBy.UserName;
-                        subForum.StackPanel.Children.Add(discussion);
-                    }
-                    break;
+            mainGrid.Children.Add(subForum);
+            var topics = vm.getTopics(forumName);
+            foreach (var topic in topics)
+            {
+                var discussion = new Discussion();
+                discussion.SubjectLabel.Content = topic.subject;
+                discussion.nameLabel.Content = topic.openedBy.UserName;
+                subForum.StackPanel.Children.Add(discussion);
             }
         }
 
@@ -78,6 +73,7 @@ namespace MyForum
                 //add welcome message for this user
                 displayWelcomeMessage(userName);
                 user = vm.GetUser(userName);
+                mainForumC.CurrentUserName = user.UserName;
                 foreach (string notification in user.NotificationList)
                 {
                     notificationLV.Items.Add(notification);
