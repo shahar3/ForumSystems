@@ -197,6 +197,7 @@ namespace MyForum.View.Controls
             if (!m_user.SubForumsList.Contains("general"))
             {
                 MessageBox.Show("You need to follow this forum in order to open the forum");
+
                 return;
             }
             mw.openForum("general");
