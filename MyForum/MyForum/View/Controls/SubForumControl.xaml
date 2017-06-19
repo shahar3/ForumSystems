@@ -25,6 +25,5 @@
                 <Button Name="AddDiscussionButton" Click="AddDiscussionButton_Click">Add Topic</Button>
                 <Button Grid.Column="1" Click="Button_Click_1">Follow</Button>
             </Grid>
-            <Button Grid.Row="0" Width="50" HorizontalAlignment="Left" Click="Button_Click">Back</Button>
-        </Grid>
+    </Grid>
 </UserControl>

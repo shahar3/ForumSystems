@@ -53,6 +53,8 @@ namespace MyForum.View.Controls
             {
                 sendNotfi(TopicSubject, TopicContent);
                 Discussion d = new Discussion();
+                d.m_content = TopicContent;
+                d.m_subject = TopicSubject;
                 d.SubjectLabel.Content = TopicSubject;
                 d.nameLabel.Content = Name;
                 this.StackPanel.Children.Add(d);
@@ -66,10 +68,7 @@ namespace MyForum.View.Controls
             _vm.sendNotification(topicSubject, topicContent, SubForumNameLbl.Content.ToString(), m_user.UserName);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Go back to mainForum
-        }
+
 
         //follow forum
         private void Button_Click_1(object sender, RoutedEventArgs e)

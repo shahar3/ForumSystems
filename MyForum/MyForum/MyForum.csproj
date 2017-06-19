@@ -73,6 +73,9 @@
     <Compile Include="View\Controls\MainForumC.xaml.cs">
       <DependentUpon>MainForumC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\messageWindow.xaml.cs">
+      <DependentUpon>messageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\NewTopic.xaml.cs">
       <DependentUpon>NewTopic.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\MainForumC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\messageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
