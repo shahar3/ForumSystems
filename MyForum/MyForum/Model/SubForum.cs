@@ -22,6 +22,7 @@ namespace MyForum.Model
         public SubForum(string forumName)
         {
             this.forumName = forumName;
+            complain = new List<Complain>();
             LeadedBy = new List<Moderator>();
             topics = new List<Topic>();
         }

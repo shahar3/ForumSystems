@@ -18,10 +18,32 @@ namespace MyForum.Model
 
         public MyModel()
         {
-            loadUsers();
             //test
+            //List<SubForum> lead = new List<SubForum>();
+            //List<string> notification = new List<string>();
+            //List<string> subForumList = new List<string>();
+            //subForumList.Add("politics");
+            //Moderator politicsModerator = new Moderator(lead, "moderator1", "moderator1", "m@gmail.com", "0000", "moderator1", true, true, true, notification, subForumList);
+            //List<string> subForumList2 = new List<string>();
+            //subForumList.Add("economics");
+            //Moderator economicsModerator = new Moderator(lead, "moderator2", "moderator2", "m@gmail.com", "0000", "moderator2", true, true, true, notification, subForumList2);
+            //List<string> subForumList3 = new List<string>();
+            //subForumList.Add("sport");
+            //Moderator sportModerator = new Moderator(lead, "moderator3", "moderator3", "m@gmail.com", "0000", "moderator3", true, true, true, notification, subForumList3);
+            //List<string> subForumList4 = new List<string>();
+            //subForumList.Add("programming");
+            //Moderator programmingModerator = new Moderator(lead, "moderator4", "moderator4", "m@gmail.com", "0000", "moderator4", true, true, true, notification, subForumList4);
+            //List<string> subForumList5 = new List<string>();
+            //subForumList.Add("general");
+            //Moderator generalModerator = new Moderator(lead, "moderator5", "moderator5", "m@gmail.com", "0000", "moderator5", true, true, true, notification, subForumList5);
+            //addUserToFile(politicsModerator);
+            //addUserToFile(economicsModerator);
+            //addUserToFile(sportModerator);
+            //addUserToFile(programmingModerator);
+            //addUserToFile(generalModerator);
+            //test
+            loadUsers();
             loadSubForumDict();
-            //endtest
             loadForumsMessages();
         }
 
@@ -49,6 +71,14 @@ namespace MyForum.Model
                         "with reading it.");
                 } // end try-catch
             } // end if
+        }
+
+        internal string getReport(string forumName)
+        {
+            string numOfTopics = this.forum.subForums[forumName].topics.Count().ToString();
+            string numOfLeaders = this.forum.subForums[forumName].LeadedBy.Count().ToString();
+            string numOfComplain = "0";
+            return numOfComplain + " " + numOfTopics +  " " + numOfLeaders;
         }
 
         internal void close()

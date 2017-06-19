@@ -38,6 +38,7 @@ namespace MyForum.Model
             ManagedBy = new List<Admin>();
             compOnManager = new List<Complain>();
             banUserList = new List<RegisteredUser>();
+            this.friendGroup = new List<FriendsGroup>();
 
         }
 

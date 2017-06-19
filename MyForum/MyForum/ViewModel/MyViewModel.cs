@@ -89,5 +89,11 @@ namespace MyForum.ViewModel
         {
             model.clearNotification(userName);
         }
+
+        //get report
+        internal string getReport(string forumName)
+        {
+            return model.getReport(forumName);
+        }
     }
 }

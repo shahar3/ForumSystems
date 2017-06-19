@@ -44,6 +44,11 @@ namespace MyForum.View.Controls
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (currentUserName == "" || currentUserName == null)
+            {
+                MessageBox.Show("You need to login to perform this action");
+                return;
+            }
             // List<Topic> topics = vm.getTopics("politics");
             m_user = vm.GetUser(currentUserName);
             if (!m_user.SubForumsList.Contains("politics"))
@@ -157,6 +162,11 @@ namespace MyForum.View.Controls
         //open economics forum
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
+            if (currentUserName == "" || currentUserName == null)
+            {
+                MessageBox.Show("You need to login to perform this action");
+                return;
+            }
             m_user = vm.GetUser(currentUserName);
             if (!m_user.SubForumsList.Contains("economics"))
             {
@@ -169,6 +179,11 @@ namespace MyForum.View.Controls
         //open sport forum
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
+            if (currentUserName == "" || currentUserName == null)
+            {
+                MessageBox.Show("You need to login to perform this action");
+                return;
+            }
             m_user = vm.GetUser(currentUserName);
             if (!m_user.SubForumsList.Contains("sport"))
             {
@@ -181,6 +196,11 @@ namespace MyForum.View.Controls
         //open programming forum
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
+            if (currentUserName == "" || currentUserName == null)
+            {
+                MessageBox.Show("You need to login to perform this action");
+                return;
+            }
             m_user = vm.GetUser(currentUserName);
             if (!m_user.SubForumsList.Contains("programming"))
             {
@@ -193,11 +213,15 @@ namespace MyForum.View.Controls
         //open general forum
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
+            if(currentUserName=="" || currentUserName == null)
+            {
+                MessageBox.Show("You need to login to perform this action");
+                return;
+            }
             m_user = vm.GetUser(currentUserName);
             if (!m_user.SubForumsList.Contains("general"))
             {
                 MessageBox.Show("You need to follow this forum in order to open the forum");
-
                 return;
             }
             mw.openForum("general");

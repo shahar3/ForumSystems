@@ -70,5 +70,23 @@ namespace MyForum.View.Controls
         {
             //Go back to mainForum
         }
+
+        //get report about the forum (for moderator)
+        private void getReport_Click(object sender, RoutedEventArgs e)
+        {
+            m_user = _vm.GetUser(Name);
+            if (m_user.CanBanUser)//this is moderator
+            {
+                string report = _vm.getReport(SubForumNameLbl.Content.ToString());
+                string[] rep = report.Split(' ');
+
+                MessageBox.Show("number of complains: " + rep[0] + "\nnumber op topics: " + rep[1] + "\nnumber of leaders: "+rep[2]);
+            }
+            else
+            {
+                MessageBox.Show("You dont have permission to do this action");
+                return;
+            }
+        }
     }
 }

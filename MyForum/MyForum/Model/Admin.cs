@@ -11,7 +11,7 @@ namespace MyForum.Model
 	{
 		Forum Manage;
 
-		public Admin():base("")
+		public Admin(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser, List<string> notification, List<string> subForumList) : base(firstName, lastName, email, password, userName, true, true, true, notification, subForumList)
 		{
 
 		}
