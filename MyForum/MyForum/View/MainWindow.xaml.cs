@@ -15,9 +15,9 @@ namespace MyForum
     {
         private readonly LogInC loginC;
         private readonly MainForumC mainForumC;
-        private User user;
+        private RegisteredUser user;
         private readonly MyViewModel vm;
-        private SubForum sf;
+        private SubForumControl sf;
 
         public MainWindow()
         {
@@ -32,7 +32,7 @@ namespace MyForum
 
         public void openForum(string forumName)
         {
-            var subForum = new SubForum(vm);
+            var subForum = new SubForumControl(vm);
             sf = subForum;
             subForum.SubForumNameLbl.Content = forumName;
             switch (forumName)
@@ -54,7 +54,7 @@ namespace MyForum
                     {
                         var discussion = new Discussion();
                         discussion.SubjectLabel.Content = topic.subject;
-                        discussion.nameLabel.Content = topic.messageOwner.UserName;
+                        discussion.nameLabel.Content = topic.openedBy.UserName;
                         subForum.StackPanel.Children.Add(discussion);
                     }
                     break;
@@ -78,7 +78,12 @@ namespace MyForum
                 //add welcome message for this user
                 displayWelcomeMessage(userName);
                 user = vm.GetUser(userName);
-                notificationLV.Items.Add(user.NotificationList);
+                foreach (string notification in user.NotificationList)
+                {
+                    notificationLV.Items.Add(notification);
+                }
+                //clear the notification list for this user
+                vm.clearNotification(userName);
             }
             else
             {

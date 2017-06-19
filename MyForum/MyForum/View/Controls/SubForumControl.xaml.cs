@@ -1,20 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using MyForum.Model;
 using MyForum.ViewModel;
 
 namespace MyForum.View.Controls
 {
     /// <summary>
-    /// Interaction logic for SubForum.xaml
+    /// Interaction logic for SubForumControl.xaml
     /// </summary>
-    public partial class SubForum : UserControl
+    public partial class SubForumControl : UserControl
     {
         private readonly MyViewModel _vm;
-        private User m_user;
+        private RegisteredUser m_user;
 
-        public SubForum(MyViewModel vm)
+        public SubForumControl(MyViewModel vm)
         {
             _vm = vm;
             InitializeComponent();
@@ -45,7 +56,6 @@ namespace MyForum.View.Controls
                 d.SubjectLabel.Content = TopicSubject;
                 d.nameLabel.Content = Name;
                 this.StackPanel.Children.Add(d);
-
                 //add topic to topic dictinary
                 _vm.addTopic(new Topic(TopicSubject, TopicContent, m_user), this.SubForumNameLbl.Content.ToString());
             }
@@ -53,7 +63,7 @@ namespace MyForum.View.Controls
 
         private void sendNotfi(string topicSubject, string topicContent)
         {
-            // throw new NotImplementedException();
+            _vm.sendNotification(topicSubject, topicContent, SubForumNameLbl.Content.ToString(), m_user.UserName);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,7 +75,15 @@ namespace MyForum.View.Controls
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             m_user = _vm.GetUser(Name);
-            _vm.follow(m_user,SubForumNameLbl.Content.ToString());
+            if (!m_user.SubForumsList.Contains(SubForumNameLbl.Content.ToString()))
+            {
+                _vm.follow(m_user, SubForumNameLbl.Content.ToString());
+                MessageBox.Show("You are follow " + SubForumNameLbl.Content.ToString() + " forum!");
+            }
+            else
+            {
+                MessageBox.Show("You are already follow " + SubForumNameLbl.Content.ToString() + " forum");
+            }
         }
     }
 }

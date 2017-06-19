@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    
-    interface Observer
+    [Serializable]
+    class OwnerNotification : Notification
     {
-         void update(Notification notification);
+        private string content;
+        private DateTime date;
     }
 }

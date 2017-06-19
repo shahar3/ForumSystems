@@ -56,19 +56,20 @@ namespace MyForum.ViewModel
             return model.register(firstName, lastName, email, userName, password);
         }
 
-        internal void sendNotification(string forumName,string userName)
+        internal void sendNotification(string topicSubject, string topicContent,string forumName,string userName)
         {
+            model.sendNotification(topicSubject, topicContent,forumName,userName);
         }
 
         internal void addTopic(Topic topic, string forumName)
         {
             model.addTopic(topic, forumName);
-            model.sendNotification(forumName,topic.messageOwner.UserName);
+            //model.sendNotification(forumName,topic.messageOwner.UserName);
         }
 
         #endregion event handler
 
-        internal User GetUser(string userName)
+        internal RegisteredUser GetUser(string userName)
         {
             return model.getUser(userName);
         }
@@ -78,9 +79,15 @@ namespace MyForum.ViewModel
             model.close();
         }
 
-        internal void follow(User user,string forumName)
+        internal void follow(RegisteredUser user,string forumName)
         {
             model.follow(user,forumName);
+        }
+
+        //clear the notification list
+        internal void clearNotification(string userName)
+        {
+            model.clearNotification(userName);
         }
     }
 }

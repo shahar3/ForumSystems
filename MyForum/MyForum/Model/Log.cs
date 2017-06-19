@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    
-    interface Observer
+    [Serializable]
+    class Log
     {
-         void update(Notification notification);
+        Logger document;
+        private DateTime timeLog;
+        private string InfoLog;
+
     }
 }

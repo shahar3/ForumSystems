@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
+    [Serializable]
     class Notification
     {
-        string msg;
-        string title;
+        List<RegisteredUser> notificated;
 
-        public Notification(string msg, string title)
+        public void sendNotificationToUser()
         {
-            this.msg = msg;
-            this.title = title;
+        }
+
+        /**
+         * 
+         * @param ModiratorId
+         */
+        public void sendModeratorNotification(int ModiratorId)
+        {
         }
     }
 }

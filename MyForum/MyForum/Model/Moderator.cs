@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class Moderator : AManagement
+    [Serializable]
+    class Moderator : RegisteredUser
     {
-        public Moderator(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser) : base(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser)
+        List<SubForum> Lead;
+        private int ComplainsNum;
+        private int securityLevelInForum;
+
+        public Moderator():base("")
         {
+
         }
     }
 }

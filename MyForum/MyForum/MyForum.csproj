@@ -56,6 +56,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ActionLogger.cs" />
+    <Compile Include="Model\Complain.cs" />
+    <Compile Include="Model\ErrorLogger.cs" />
+    <Compile Include="Model\FriendNotification.cs" />
+    <Compile Include="Model\FriendsGroup.cs" />
+    <Compile Include="Model\Guest.cs" />
+    <Compile Include="Model\Log.cs" />
+    <Compile Include="Model\Logger.cs" />
+    <Compile Include="Model\OwnerNotification.cs" />
+    <Compile Include="Model\PolicyRules.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="View\Controls\Discussion.xaml.cs">
       <DependentUpon>Discussion.xaml</DependentUpon>
     </Compile>
@@ -65,8 +76,8 @@
     <Compile Include="View\Controls\NewTopic.xaml.cs">
       <DependentUpon>NewTopic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\SubForum.xaml.cs">
-      <DependentUpon>SubForum.xaml</DependentUpon>
+    <Compile Include="View\Controls\SubForumControl.xaml.cs">
+      <DependentUpon>SubForumControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\UserNotificationC.xaml.cs">
       <DependentUpon>UserNotificationC.xaml</DependentUpon>
@@ -90,7 +101,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Controls\SubForum.xaml">
+    <Page Include="View\Controls\SubForumControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,11 +118,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Admin.cs" />
-    <Compile Include="Model\AForum.cs" />
-    <Compile Include="Model\AManagement.cs" />
     <Compile Include="Model\Notification.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Model\MainForum.cs" />
+    <Compile Include="Model\RegisteredUser.cs" />
+    <Compile Include="Model\Forum.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Moderator.cs" />
     <Compile Include="Model\MyModel.cs" />

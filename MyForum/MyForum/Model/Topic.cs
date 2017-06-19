@@ -12,14 +12,16 @@ namespace MyForum.Model
         public List<Message> messages;
         public string subject;
         public string content;
-        public User messageOwner;
-        public int id;
+        public RegisteredUser openedBy;
+        private string userFirstOpenMsgName;
 
-        public Topic(string subject,string content,User user)
+        public Topic(string subject,string content,RegisteredUser user)
         {
+            messages = new List<Message>();
             this.content = content;
             this.subject = subject;
-            messageOwner = user;
+            openedBy = user;
+            userFirstOpenMsgName = openedBy.UserName;
         }
     }
 }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    
-    interface Observer
+    [Serializable]
+    class Guest :User
     {
-         void update(Notification notification);
     }
 }

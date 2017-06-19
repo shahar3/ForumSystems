@@ -6,11 +6,47 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class Admin : AManagement
-    {
+    [Serializable]
+    class Admin : RegisteredUser
+	{
+		Forum Manage;
 
-        public Admin(string firstName, string lastName, string email, string password, string userName, bool canDeleteMsg, bool canDeleteTopic, bool canBanUser) : base(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser)
-        {
-        }
-    }
+		public Admin():base("")
+		{
+
+		}
+
+
+	/**
+	 * 
+	 * @param managerId
+	 * @param forumId
+	 */
+	public void checkManager(int managerId, int forumId)
+		{
+		}
+
+		public void sendAppelToManager()
+		{
+		}
+
+		/**
+		 * 
+		 * @param UserId
+		 */
+		public void decideIfYouWantBanUser(int UserId)
+		{
+		}
+
+		/**
+		 * 
+		 * @param reportId
+		 * @param forumId
+		 * @param ModeratorId
+		 */
+		public void SendReport(int reportId, int forumId, int ModeratorId)
+		{
+		}
+
+	}
 }

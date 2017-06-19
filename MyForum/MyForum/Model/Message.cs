@@ -6,15 +6,30 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
+    [Serializable]
     class Message
     {
-        string content;
-        User publisher;
 
-        public Message(User publisher, string content)
+        List<Message> response;
+        Message ancestor;
+        RegisteredUser SendedBy;
+        RegisteredUser RecivedBy;
+        private string title;
+        private string content;
+        private DateTime publishDate;
+        private string userPublish;
+
+        public Message()
         {
-            this.publisher = publisher;
-            this.content = content;
+
         }
+        /**
+         * 
+         * @param SearchQuery
+         */
+        public void getRelevantMessage(int SearchQuery)
+        {
+        }
+
     }
 }

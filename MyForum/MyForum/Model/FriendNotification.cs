@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyForum.Model
 {
-    class MainForum
+    [Serializable]
+    class FriendNotification :Notification
     {
-        public MainForum()
-        {
-
-        }
     }
 }

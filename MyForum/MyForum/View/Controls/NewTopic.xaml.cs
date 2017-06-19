@@ -20,14 +20,14 @@ namespace MyForum.View.Controls
     public partial class NewTopic : Window
     {
         public bool End = false;
-        private SubForum sf;
+        private SubForumControl sf;
 
-        public NewTopic(SubForum subForum)
+        public NewTopic(SubForumControl subForum)
         {
             sf = subForum;
             InitializeComponent();
         }
-
+        
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             sf.addTopic(this.ContentTextBox.Text, this.SubjectTextBox.Text);
@@ -36,6 +36,7 @@ namespace MyForum.View.Controls
 
         private void addNewTopic()
         {
+
         }
 
         private void sendNotification()

@@ -13,37 +13,34 @@ namespace MyForum.Model
     [Serializable]
     public class MyModel : INotifyPropertyChanged
     {
-        private Dictionary<string, User> users = new Dictionary<string, User>();
-        private Dictionary<string, List<Topic>> topics = new Dictionary<string, List<Topic>>();
-
+        Forum forum = new Forum();
         private BinaryFormatter formatter = new BinaryFormatter();
 
         public MyModel()
         {
-            topics.Add("politics", new List<Topic>());
-
             loadUsers();
             //test
-            loadTopics();
+            loadSubForumDict();
             //endtest
             loadForumsMessages();
         }
 
-        private void loadTopics()
+        private void loadSubForumDict()
         {
             // Check if we had previously Save information of our friends previously
             if (File.Exists("topics.txt"))
             {
                 try
                 {
-                    // Create a FileStream will gain read access to the data file.
-                    FileStream readerFileStream = new FileStream("topics.txt",
-                        FileMode.Open, FileAccess.Read);
-                    // Reconstruct information of our friends from file.
-                    this.topics = (Dictionary<String, List<Topic>>)
-                        this.formatter.Deserialize(readerFileStream);
-                    // Close the readerFileStream when we are done
-                    readerFileStream.Close();
+                        string path = "topics";
+                        // Create a FileStream will gain read access to the data file.
+                        FileStream readerFileStream = new FileStream("topics.txt",
+                            FileMode.Open, FileAccess.Read);
+                        // Reconstruct information of our friends from file.
+                        this.forum.SubForums = (Dictionary<String, SubForum>)
+                            this.formatter.Deserialize(readerFileStream);
+                        // Close the readerFileStream when we are done
+                        readerFileStream.Close();
                 }
                 catch (Exception)
                 {
@@ -56,32 +53,73 @@ namespace MyForum.Model
 
         internal void close()
         {
-            saveTopics();
+            saveSubForums();
+            saveUsers();
         }
 
-        internal void sendNotification(string forumName, string userName)
+        //this function save the users dictionary to file
+        private void saveUsers()
         {
-            foreach (string user in users.Keys)
+            using (FileStream fs = new FileStream("users.txt", FileMode.Create))
             {
-                foreach (string subForum in users[user].SubForumsList)
+                using (BinaryWriter bw = new BinaryWriter(fs))
+                {
+                    foreach (string user in this.forum.users.Keys)
+                    {
+                        RegisteredUser userToWrite = this.forum.users[user];
+                        bw.Write(userToWrite.FirstName);
+                        bw.Write(userToWrite.LastName);
+                        bw.Write(userToWrite.Email);
+                        bw.Write(userToWrite.Password);
+                        bw.Write(userToWrite.UserName);
+                        bw.Write(userToWrite.CanDeleteMsg);
+                        bw.Write(userToWrite.CanDeleteTopic);
+                        bw.Write(userToWrite.CanBanUser);
+                        bw.Write(userToWrite.NotificationList.Count.ToString());
+                        foreach (string noti in userToWrite.NotificationList)
+                        {
+                            bw.Write(noti);
+                        }
+                        bw.Write(userToWrite.SubForumsList.Count.ToString());
+                        foreach (string subF in userToWrite.SubForumsList)
+                        {
+                            bw.Write(subF);
+                        }
+                    }
+                }
+            }
+        }
+
+        internal void clearNotification(string userName)
+        {
+            this.forum.users[userName].NotificationList.Clear();
+        }
+
+        internal void sendNotification(string subject, string content, string forumName, string userName)
+        {
+            foreach (string user in this.forum.users.Keys)
+            {
+                foreach (string subForum in this.forum.users[user].SubForumsList)
                 {
                     if (forumName == subForum && user != userName)
                     {
-                        users[user].NotificationList.Add(forumName + " " + userName);
+                        string message = userName + " added new topic in " + forumName + " forum";
+                        this.forum.users[user].NotificationList.Add(message);
                     }
                 }
             }
         }
 
         //add this forum to sub forum list in the user
-        internal void follow(User user, string forumName)
+        internal void follow(RegisteredUser user, string forumName)
         {
+            //add the forum to the sub list of the user
             user.SubForumsList.Add(forumName);
         }
 
-        private void saveTopics()
+        private void saveSubForums()
         {
-            WriteToBinaryFile<Dictionary<string, List<Topic>>>("topics.txt", topics, false);
+                WriteToBinaryFile<Dictionary<string,SubForum>>("topics.txt", this.forum.SubForums, false);
         }
 
         public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
@@ -101,9 +139,9 @@ namespace MyForum.Model
         //This function check if the details for login are correct
         public bool login(string userName, string password)
         {
-            if (users.ContainsKey(userName))
+            if (this.forum.users.ContainsKey(userName))
             {
-                if (users[userName].Password == password)
+                if (this.forum.users[userName].Password == password)
                 {
                     return true;
                 }
@@ -144,8 +182,8 @@ namespace MyForum.Model
                         {
                             subForumList.Add(sr.ReadString());
                         }
-                        User user = new User(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser, notification, subForumList);
-                        users.Add(user.UserName, user);
+                        RegisteredUser user = new RegisteredUser(firstName, lastName, email, password, userName, canDeleteMsg, canDeleteTopic, canBanUser, notification, subForumList);
+                        this.forum.users.Add(user.UserName, user);
                     }
                 }
             }
@@ -154,28 +192,28 @@ namespace MyForum.Model
         //take the topic for specific forum
         internal List<Topic> getTopics(string forumName)
         {
-            if (topics.Count == 0 && !topics.ContainsKey(forumName))
+            if (this.forum.subForums[forumName].topics.Count == 0)
             {
                 return new List<Topic>();
             }
-            return topics[forumName];
+            return this.forum.subForums[forumName].topics;
         }
 
         internal bool register(string firstName, string lastName, string email, string userName, string password)
         {
             //check if the user already exist in the system
-            if (users.ContainsKey(userName))
+            if (this.forum.users.ContainsKey(userName))
             {
                 MessageBox.Show("There is a user with the same username (" + userName + ")");
                 return false;
             }
-            users[userName] = new User(firstName, lastName, email, password, userName, false, false, false, null, null);
-            addUserToFile(users[userName]);
+            this.forum.users[userName] = new RegisteredUser(firstName, lastName, email, password, userName, false, false, false, null, null);
+            addUserToFile(this.forum.users[userName]);
             MessageBox.Show("User was added successfully");
             return true;
         }
 
-        private void addUserToFile(User user)
+        private void addUserToFile(RegisteredUser user)
         {
             using (FileStream fs = new FileStream("users.txt", FileMode.Append))
             {
@@ -217,14 +255,15 @@ namespace MyForum.Model
 
         #endregion event handler
 
-        internal User getUser(string userName)
+        internal RegisteredUser getUser(string userName)
         {
-            return users[userName];
+            return this.forum.users[userName];
         }
 
         internal void addTopic(Topic topic, string subForumName)
         {
-            topics[subForumName].Add(topic);
+            //topics[subForumName].Add(topic);
+            this.forum.subForums[subForumName].topics.Add(topic);
         }
     }
 }
