@@ -20,14 +20,13 @@ namespace MyForum.Model
         private string userName;
         private List<string> subForumsList;
         private List<string> notificationList;
-        //new
         List<Message> Publish;
         List<Message> Recive;
         List<Topic> topicsList;
         List<FriendsGroup> belong;
         List<RegisteredUser> FriendedBy;
         List<RegisteredUser> Friend;
-        private bool statusActive;
+        public bool statusActive;
 
 
         #endregion fields
