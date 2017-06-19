@@ -13,7 +13,12 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" HorizontalAlignment="Left" Width="100" Click="Button_Click_1">Home</Button>
+        <Button Grid.Row="0" HorizontalAlignment="Right" Width="100" Click="Button_Click_1">Home</Button>
+        <StackPanel Name="SearchSP" Orientation="Horizontal">
+            <Button Name="SearchButton" HorizontalAlignment="Left" Click="SearchButton_Click">search</Button>
+            <TextBox Name="SearchTextBox" HorizontalAlignment="Left" MinWidth="100" Background="AliceBlue"></TextBox>
+        </StackPanel>
+        
         <Grid Grid.Row="1" Grid.Column="0" Name="mainGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="545*"></ColumnDefinition>
@@ -25,7 +30,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Background="Blue" Name="sp">
-                <Button Click="Button_Click">Register</Button>
+                    <Button Click="Button_Click">Register</Button>
                 </StackPanel>
                 <ListView HorizontalAlignment="Center" Grid.Row="1" Name="notificationLV">Notifications</ListView>
             </Grid>

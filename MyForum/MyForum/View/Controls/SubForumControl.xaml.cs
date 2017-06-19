@@ -53,6 +53,8 @@ namespace MyForum.View.Controls
             {
                 sendNotfi(TopicSubject, TopicContent);
                 Discussion d = new Discussion();
+                d.m_content = TopicContent;
+                d.m_subject = TopicSubject;
                 d.SubjectLabel.Content = TopicSubject;
                 d.nameLabel.Content = Name;
                 this.StackPanel.Children.Add(d);
@@ -66,9 +68,21 @@ namespace MyForum.View.Controls
             _vm.sendNotification(topicSubject, topicContent, SubForumNameLbl.Content.ToString(), m_user.UserName);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+
+        //follow forum
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //Go back to mainForum
+            m_user = _vm.GetUser(Name);
+            if (!m_user.SubForumsList.Contains(SubForumNameLbl.Content.ToString()))
+            {
+                _vm.follow(m_user, SubForumNameLbl.Content.ToString());
+                MessageBox.Show("You are follow " + SubForumNameLbl.Content.ToString() + " forum!");
+            }
+            else
+            {
+                MessageBox.Show("You are already follow " + SubForumNameLbl.Content.ToString() + " forum");
+            }
         }
 
         //get report about the forum (for moderator)

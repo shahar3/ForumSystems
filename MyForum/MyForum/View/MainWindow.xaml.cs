@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using MyForum.Model;
@@ -50,6 +52,8 @@ namespace MyForum
             foreach (var topic in topics)
             {
                 var discussion = new Discussion();
+                discussion.m_content = topic.content;
+                discussion.m_subject = topic.subject;
                 discussion.SubjectLabel.Content = topic.subject;
                 discussion.nameLabel.Content = topic.openedBy.UserName;
                 subForum.StackPanel.Children.Add(discussion);
@@ -107,6 +111,59 @@ namespace MyForum
         private void MainWindow_OnClosing(object sender, CancelEventArgs e)
         {
             vm.close();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string query = this.SearchTextBox.Text;
+
+            List<Topic> ansList = new List<Topic>();
+
+            try
+            {
+                foreach (var subForum in user.SubForumsList)
+                {
+                    List<Topic> topicList = vm.getTopics(subForum);
+                    foreach (var topic in topicList)
+                    {
+                        if (topic.subject.Contains(query) || topic.content.Contains(query))
+                        {
+                            ansList.Add(topic);
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+
+            if (ansList.Count == 0)
+            {
+                MessageBox.Show("The search find nothing");
+            }
+
+            else
+            {
+                searchResult sr = new searchResult();
+
+                foreach (var topic in ansList)
+                {
+                    Discussion d = new Discussion();
+                    d.m_content = topic.content;
+                    d.m_subject = topic.subject;
+                    d.nameLabel.Content = topic.userFirstOpenMsgName;
+                    d.SubjectLabel.Content = topic.subject;
+                    sr.StackPanel.Children.Add(d);
+                }
+                
+                sr.Show();
+            }
+
+            
+
+
         }
     }
 }

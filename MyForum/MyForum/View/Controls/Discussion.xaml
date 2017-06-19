@@ -12,7 +12,7 @@
             <ColumnDefinition Width="60*" />
             <ColumnDefinition Width="20*" />
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="2" Name="ShowButton" Background="DarkBlue" >Open</Button>
+        <Button Grid.Column="2" Name="ShowButton" Background="DarkBlue" Click="ShowButton_Click" >Open</Button>
         <Label Name="SubjectLabel" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center">Subject</Label>
         <Label Name="nameLabel" Grid.Column="0" VerticalAlignment="Center" Background="AliceBlue" HorizontalAlignment="Center">Owner</Label>
     </Grid>

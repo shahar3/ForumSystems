@@ -20,9 +20,22 @@ namespace MyForum.View.Controls
     /// </summary>
     public partial class Discussion : UserControl
     {
+        public string m_subject = "";
+        public string m_content = "";
+
+
         public Discussion()
         {
             InitializeComponent();
+        }
+
+        //open new message window
+        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        {
+            messageWindow mw = new messageWindow();
+            mw.Subject.Text = m_subject;
+            mw.Content.Text = m_content;
+            mw.Show();
         }
     }
 }
